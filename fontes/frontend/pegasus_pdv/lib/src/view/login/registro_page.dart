@@ -516,8 +516,18 @@ class RegistroPageState extends State<RegistroPage> {
             showInSnackBar('Registro realizado com sucesso.', context, corFundo: Colors.blue);
           }
         } else {
-          showInSnackBar('Ocorreu um problema ao tentar salvar os dados no Servidor.', context, corFundo: Colors.red);
-        }        
+          // sem servidor de retaguarda o registro fica só neste computador
+          Sessao.empresa = Sessao.empresa!.copyWith(
+            registrado: const Value(true),
+            dataRegistro: Value(DateTime.now()),
+            horaRegistro: Value(Biblioteca.formatarHora(DateTime.now())),
+          );
+          await Sessao.db.empresaDao.alterar(Sessao.empresa!, Sessao.configuracaoPdv!.modulo != 'G');
+          Sessao.empresa = await Sessao.db.empresaDao.consultarObjeto(1);
+          if (!mounted) return;
+          Navigator.of(context).pop();
+          showInSnackBar('Registro salvo neste computador. Não foi possível enviá-lo ao servidor.', context, corFundo: Colors.orange);
+        }
       }      
     } else {
       gerarDialogBoxInformacao(context, 'É necessário ler e aceitar os Termos de Uso.');      
