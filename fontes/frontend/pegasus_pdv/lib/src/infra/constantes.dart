@@ -54,6 +54,15 @@ class Constantes {
 
   static const String versaoApp =  'versão 1.0.10 - Dezembro/2021';
 
+// #region NFC-e local
+  /// true = emite a NFC-e pelo ACBrMonitor instalado neste computador, sem servidor de retaguarda e sem plano pago
+  static const bool nfceLocal = true;
+  /// pasta do ACBrMonitor; nela ficam o ACBrMonitor.ini e os arquivos ent.txt/sai.txt monitorados
+  static const String caminhoAcbrMonitor = 'C:\\ACBrMonitor\\';
+  /// segundos de espera pela resposta do ACBrMonitor
+  static const int tempoEsperaAcbrMonitor = 60;
+// #endregion NFC-e local
+
 // #region Arquivo ENV
   static String chave = '#Sua-Chave-de-32-caracteres-aqui'; // #Sua-Chave-de-32-caracteres-aqui tem que alterar para produção e gerar os valores do ENV com a chave correta
   static Key key = Key.fromUtf8(Constantes.chave);
