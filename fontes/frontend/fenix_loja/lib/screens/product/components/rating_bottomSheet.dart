@@ -55,7 +55,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                 Padding(
                   padding: const EdgeInsets.only(right: 16.0),
                   child: Text(
-                    '4.8',
+                    '4,8',
                     style: TextStyle(fontSize: 48),
                   ),
                 ),
@@ -85,7 +85,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 4.0),
-                      child: Text('from 25 people'),
+                      child: Text('de 25 pessoas'),
                     )
                   ],
                 ),
@@ -95,7 +95,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
           Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
             child: Align(
-                alignment: Alignment(-1, 0), child: Text('Recent Reviews')),
+                alignment: Alignment(-1, 0), child: Text('Avaliações recentes')),
           ),
           Column(
             children: <Widget>[
@@ -132,7 +132,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      '10 am, Via iOS',
+                                      '10h, via iOS',
                                       style: TextStyle(
                                           color: Colors.grey, fontSize: 10.0),
                                     )
@@ -166,7 +166,7 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                                   ),
                                 ),
                                 Text(
-                                  'Not as I expected! ... I`m really sad',
+                                  'Não era o que eu esperava! ... Estou muito triste',
                                   style: TextStyle(
                                     color: Colors.grey,
                                   ),
@@ -179,13 +179,13 @@ class _RatingBottomSheetState extends State<RatingBottomSheet> {
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Text(
-                                        '21 likes',
+                                        '21 curtidas',
                                         style: TextStyle(
                                             color: Colors.grey[400],
                                             fontSize: 10.0),
                                       ),
                                       Text(
-                                        '1 Comment',
+                                        '1 comentário',
                                         style: TextStyle(
                                             color: Colors.blue,
                                             fontWeight: FontWeight.bold,

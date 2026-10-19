@@ -10,9 +10,9 @@ class PaymentHistoryPage extends StatefulWidget {
 
 class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
   List<User> users = [];
-  List<String> dates = ['24th June 2019', '29th June 2019', '2nd July 2019'];
+  List<String> dates = ['24 de junho de 2019', '29 de junho de 2019', '2 de julho de 2019'];
 
-  String selectedMonth = 'June 2019';
+  String selectedMonth = 'Junho de 2019';
 
   // Integrate your API SERVICE here
   // You only need to define where are your data come from
@@ -40,7 +40,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
           elevation: 0.0,
           iconTheme: IconThemeData(color:Colors.black),
           title: Text(
-            'Payment History',
+            'Histórico de pagamentos',
             style: TextStyle(color: Colors.black),
           ),
           brightness: Brightness.light,
@@ -60,18 +60,18 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
                         items: <String>[
-                          'January 2019',
-                          'February 2019',
-                          'March 2019',
-                          'April 2019',
-                          'May 2019',
-                          'June 2019',
-                          'July 2019',
-                          'August 2019',
-                          'September 2019',
-                          'Octomber 2019',
-                          'November 2019',
-                          'December 2019'
+                          'Janeiro de 2019',
+                          'Fevereiro de 2019',
+                          'Março de 2019',
+                          'Abril de 2019',
+                          'Maio de 2019',
+                          'Junho de 2019',
+                          'Julho de 2019',
+                          'Agosto de 2019',
+                          'Setembro de 2019',
+                          'Outubro de 2019',
+                          'Novembro de 2019',
+                          'Dezembro de 2019'
                         ].map((val) {
                           return DropdownMenuItem<String>(
                             value: val,
@@ -168,7 +168,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                                                                   ),
                                                                 ),
                                                                 Text(
-                                                                  'Request',
+                                                                  'Solicitação',
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10.0),
@@ -188,7 +188,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                                                                   children: <
                                                                       Widget>[
                                                                     Text(
-                                                                      '\$ ',
+                                                                      'R\$ ',
                                                                       style: TextStyle(
                                                                           fontWeight:
                                                                               FontWeight
@@ -197,7 +197,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                                                                               10.0),
                                                                     ),
                                                                     Text(
-                                                                      '90.00',
+                                                                      '90,00',
                                                                       style: TextStyle(
                                                                           fontWeight:
                                                                               FontWeight
@@ -212,7 +212,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                                                                           vertical:
                                                                               8.0),
                                                                   child: Text(
-                                                                      '2:00 am',
+                                                                      '2h00',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               12,

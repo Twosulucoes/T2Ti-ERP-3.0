@@ -52,7 +52,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -67,7 +67,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Text(
-                  'Notifications',
+                  'Notificações',
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -78,23 +78,23 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                 child: ListView(
                   children: <Widget>[
                     ListTile(
-                      title: Text('My orders'),
+                      title: Text('Meus pedidos'),
                       trailing: platformSwitch(myOrders),
                     ),
                     ListTile(
-                      title: Text('Reminders'),
+                      title: Text('Lembretes'),
                       trailing: platformSwitch(reminders),
                     ),
                     ListTile(
-                      title: Text('New Offers'),
+                      title: Text('Novas ofertas'),
                       trailing: platformSwitch(newOffers),
                     ),
                     ListTile(
-                      title: Text('Feedbacks and Reviews'),
+                      title: Text('Comentários e avaliações'),
                       trailing: platformSwitch(feedbackReviews,)
                     ),
                     ListTile(
-                      title: Text('Updates'),
+                      title: Text('Atualizações'),
                       trailing: platformSwitch(updates),
                     ),
                   ],

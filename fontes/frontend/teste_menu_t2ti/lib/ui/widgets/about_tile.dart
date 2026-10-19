@@ -16,7 +16,7 @@ class MyAboutTile extends StatelessWidget {
           height: 10.0,
         ),
         Text(
-          "Developed By Team T2Ti",
+          "Desenvolvido pela equipe T2Ti",
         ),
         Text(
           "T2Ti.COM",

@@ -33,7 +33,7 @@ class ProfileTwoPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 20.0),
                   ),
                   Text(
-                    "Flutter Developer",
+                    "Desenvolvedor Flutter",
                     style: TextStyle(color: Colors.white),
                   )
                 ],
@@ -52,7 +52,7 @@ class ProfileTwoPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Photos",
+                  "Fotos",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
                 ),
               ),
@@ -91,13 +91,13 @@ class ProfileTwoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Albert Eije posted a photo",
+                    "Albert Eije publicou uma foto",
                   ),
                   SizedBox(
                     height: 5.0,
                   ),
                   Text(
-                    "25 mins ago",
+                    "25 min atrás",
                   )
                 ],
               ),
@@ -117,7 +117,7 @@ class ProfileTwoPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Post",
+                  "Publicação",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
                 ),
               ),
@@ -150,7 +150,7 @@ class ProfileTwoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     deviceSize = MediaQuery.of(context).size;
     return CommonScaffold(
-      appTitle: "Profile",
+      appTitle: "Perfil",
       bodyData: bodyData(),
       elevation: 0.0,
     );

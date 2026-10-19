@@ -249,7 +249,7 @@ class ReciboA4 {
       mainAxisAlignment: pw.MainAxisAlignment.end,
       children: [
         pw.Text(
-          'Page ${context.pageNumber}/${context.pagesCount}',
+          'Página ${context.pageNumber}/${context.pagesCount}',
           style: const pw.TextStyle(
             fontSize: 12,
             color: PdfColors.black,

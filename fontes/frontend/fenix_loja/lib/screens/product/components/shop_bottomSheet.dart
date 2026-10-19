@@ -15,17 +15,17 @@ class _ShopBottomSheetState extends State<ShopBottomSheet> {
     Product(
         'assets/headphones.png',
         'Boat roackerz 400 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         45.3),
     Product(
         'assets/headphones_2.png',
         'Boat roackerz 100 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         22.3),
     Product(
         'assets/headphones_3.png',
         'Boat roackerz 300 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         58.3)
   ];
 
@@ -45,7 +45,7 @@ class _ShopBottomSheetState extends State<ShopBottomSheet> {
                 ? 20
                 : MediaQuery.of(context).padding.bottom),
         child: Center(
-            child: new Text("Confirm",
+            child: new Text("Confirmar",
                 style: const TextStyle(
                     color: const Color(0xfffefefe),
                     fontWeight: FontWeight.w600,

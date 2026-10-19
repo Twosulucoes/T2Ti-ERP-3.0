@@ -17,7 +17,7 @@ class NotificationsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Notification',
+                    'Notificações',
                     style: TextStyle(
                       color: darkGrey,
                       fontSize: 22,
@@ -64,10 +64,10 @@ class NotificationsPage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                               )),
                                           TextSpan(
-                                            text: ' Requested for ',
+                                            text: ' solicitou ',
                                           ),
                                           TextSpan(
-                                            text: '\$45.25',
+                                            text: 'R\$ 45,25',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -91,7 +91,7 @@ class NotificationsPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Text('Pay',
+                                    child: Text('Pagar',
                                         style:
                                             TextStyle(color: Colors.blue[700])),
                                   )
@@ -107,7 +107,7 @@ class NotificationsPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Text('Decline',
+                                    child: Text('Recusar',
                                         style: TextStyle(
                                             color: Color(0xffF94D4D))),
                                   )
@@ -152,10 +152,10 @@ class NotificationsPage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                               )),
                                           TextSpan(
-                                            text: ' Send You ',
+                                            text: ' enviou para você ',
                                           ),
                                           TextSpan(
-                                            text: '\$45.25',
+                                            text: 'R\$ 45,25',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -179,7 +179,7 @@ class NotificationsPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Text('Accept',
+                                    child: Text('Aceitar',
                                         style:
                                             TextStyle(color: Colors.blue[700])),
                                   )
@@ -195,7 +195,7 @@ class NotificationsPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0),
-                                    child: Text('Decline',
+                                    child: Text('Recusar',
                                         style: TextStyle(
                                             color: Color(0xffF94D4D))),
                                   )
@@ -255,7 +255,7 @@ class NotificationsPage extends StatelessWidget {
                                           fontSize: 10)),
                                   SizedBox(height:4.0),
                                   Text(
-                                      'Your package has been delivered. Thanks for shopping!',
+                                      'Seu pacote foi entregue. Obrigado pela compra!',
                                       style: TextStyle(
                                           color: Colors.grey, fontSize: 10))
                                 ]),
@@ -276,7 +276,7 @@ class NotificationsPage extends StatelessWidget {
                                 child: Align(
                                     alignment: Alignment.centerRight,
                                     child: Text(
-                                      'Share your feedback',
+                                      'Compartilhe sua opinião',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -335,7 +335,7 @@ class NotificationsPage extends StatelessWidget {
                                           fontSize: 10)),
                                   SizedBox(height:4.0),
                                   Text(
-                                      'Your package has been dispatched. You can keep track of your product.',
+                                      'Seu pacote foi despachado. Você pode acompanhar seu produto.',
                                       style: TextStyle(
                                           color: Colors.grey, fontSize: 10))
                                 ]),
@@ -355,7 +355,7 @@ class NotificationsPage extends StatelessWidget {
                                 child: Align(
                                     alignment: Alignment.centerRight,
                                     child: Text(
-                                      'Track the product',
+                                      'Rastrear o produto',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,

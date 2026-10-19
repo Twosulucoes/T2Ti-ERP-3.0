@@ -53,7 +53,7 @@ class PromoItem extends StatelessWidget {
                                     children: <Widget>[
                                       ColorOption(Colors.red),
                                       Text(
-                                        '\$58.24',
+                                        'R\$ 58,24',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: darkGrey,
@@ -105,7 +105,7 @@ class PromoItem extends StatelessWidget {
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 16.0),
-                            child: Text('Use Promo Code'),
+                            child: Text('Usar código promocional'),
                           ),
                           Container(
                             padding: EdgeInsets.only(left: 16.0),
@@ -117,7 +117,7 @@ class PromoItem extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Promo Code'),
+                                  hintText: 'Código promocional'),
                             ),
                           ),
                         ],
@@ -129,7 +129,7 @@ class PromoItem extends StatelessWidget {
           Positioned(top: 5, child: ShopProductDisplay(Product(
               'assets/headphones.png',
               'Boat roackerz 400 On-Ear Bluetooth Headphones',
-              'description',
+              'descrição',
               45.3))),
         ],
       ),

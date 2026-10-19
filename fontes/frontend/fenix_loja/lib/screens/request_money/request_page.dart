@@ -48,7 +48,7 @@ class _RequestPageState extends State<RequestPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Request Amount',
+          'Solicitar valor',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -86,7 +86,7 @@ class _RequestPageState extends State<RequestPage> {
                 // },
                 cursorColor: darkGrey,
                 decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'Pesquisar',
                     contentPadding: EdgeInsets.zero,
                     border: InputBorder.none,
                     prefixIcon: SvgPicture.asset('assets/icons/search_icon.svg', fit: BoxFit.scaleDown,),
@@ -96,14 +96,14 @@ class _RequestPageState extends State<RequestPage> {
                           // searchResults.clear();
                         },
                         child: Text(
-                          'Clear',
+                          'Limpar',
                           style: TextStyle(color: Colors.red),
                         ))),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
-              child: Text('Frequent Contacts'),
+              child: Text('Contatos frequentes'),
             ),
             Expanded(
                 child: Center(
@@ -169,7 +169,7 @@ class _RequestPageState extends State<RequestPage> {
             )),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-              child: Text('Your Contacts'),
+              child: Text('Seus contatos'),
             ),
             Expanded(
                 flex: 2,
@@ -231,7 +231,7 @@ class _RequestPageState extends State<RequestPage> {
                                               ),
                                               Spacer(),
                                               Text(
-                                                'Request',
+                                                'Solicitar',
                                                 style:
                                                     TextStyle(fontSize: 10.0),
                                               )

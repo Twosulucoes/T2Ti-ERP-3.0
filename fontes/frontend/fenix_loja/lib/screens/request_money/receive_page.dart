@@ -19,7 +19,7 @@ class ReceivePaymentPage extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Receive Payment',
+          'Receber pagamento',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -50,7 +50,7 @@ class ReceivePaymentPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  '\$',
+                                  'R\$',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class ReceivePaymentPage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 8.0),
-                                Text('54.24',
+                                Text('54,24',
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 48,
@@ -105,7 +105,7 @@ class ReceivePaymentPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: <Widget>[
-                Text('Retry Again with new',
+                Text('Tentar novamente com um novo',
                     style: TextStyle(
                         color:Colors.white)),
                 SizedBox(
@@ -114,7 +114,7 @@ class ReceivePaymentPage extends StatelessWidget {
                 InkWell(
                     onTap: () {},
                     child: Text(
-                      'QR code',
+                      'QR Code',
                       style: TextStyle(
                         color:Colors.white,
                           fontWeight: FontWeight.bold,

@@ -18,7 +18,7 @@ class AddAddressForm extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
-                  border: InputBorder.none, hintText: 'Flat Number/House Number'),
+                  border: InputBorder.none, hintText: 'Número do apartamento/casa'),
             ),
           ),
           Container(
@@ -29,7 +29,7 @@ class AddAddressForm extends StatelessWidget {
             ),
             child: TextField(
               decoration:
-                  InputDecoration(border: InputBorder.none, hintText: 'Street'),
+                  InputDecoration(border: InputBorder.none, hintText: 'Rua'),
             ),
           ),
           Column(
@@ -38,7 +38,7 @@ class AddAddressForm extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Area',
+                  'Bairro',
                   style: TextStyle(fontSize: 12, color: darkGrey),
                 ),
               ),
@@ -56,7 +56,7 @@ class AddAddressForm extends StatelessWidget {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Name on card',
+                      hintText: 'Nome no cartão',
                       hintStyle:
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
@@ -73,7 +73,7 @@ class AddAddressForm extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
-                  border: InputBorder.none, hintText: 'Name on card'),
+                  border: InputBorder.none, hintText: 'Nome no cartão'),
             ),
           ),
           ClipRRect(
@@ -87,7 +87,7 @@ class AddAddressForm extends StatelessWidget {
               ),
               child: TextField(
                 decoration: InputDecoration(
-                    border: InputBorder.none, hintText: 'Postal code'),
+                    border: InputBorder.none, hintText: 'CEP'),
               ),
             ),
           ),
@@ -97,7 +97,7 @@ class AddAddressForm extends StatelessWidget {
                 value: true,
                 onChanged: (_) {},
               ),
-              Text('Add this to address bookmark')
+              Text('Adicionar aos endereços favoritos')
             ],
           )
         ],

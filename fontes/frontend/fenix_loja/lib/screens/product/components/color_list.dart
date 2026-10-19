@@ -24,7 +24,7 @@ class _ColorListState extends State<ColorList> {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(
-              'Color',
+              'Cor',
               style: TextStyle(color: Colors.white, shadows: shadow),
             ),
           ),

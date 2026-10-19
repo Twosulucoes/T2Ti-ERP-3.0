@@ -21,17 +21,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
     Product(
         'assets/headphones.png',
         'Boat roackerz 400 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         45.3),
     Product(
         'assets/headphones_2.png',
         'Boat roackerz 100 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         22.3),
     Product(
         'assets/headphones_3.png',
         'Boat roackerz 300 On-Ear Bluetooth Headphones',
-        'description',
+        'descrição',
         58.3)
   ];
 
@@ -54,7 +54,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Check Out",
+          child: Text("Finalizar compra",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -78,7 +78,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           )
         ],
         title: Text(
-          'Checkout',
+          'Finalizar compra',
           style: TextStyle(
               color: darkGrey, fontWeight: FontWeight.w500, fontSize: 18.0),
         ),
@@ -106,7 +106,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             fontSize: 16),
                       ),
                       Text(
-                        products.length.toString() + ' items',
+                        products.length.toString() + ' itens',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Payment',
+                    'Pagamento',
                     style: TextStyle(
                         fontSize: 20,
                         color: darkGrey,

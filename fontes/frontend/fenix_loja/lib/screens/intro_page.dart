@@ -43,7 +43,7 @@ class _IntroPageState extends State<IntroPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'Get Any Thing Online',
+                        'Compre de tudo on-line',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
@@ -53,7 +53,7 @@ class _IntroPageState extends State<IntroPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 32, vertical: 16.0),
                       child: Text(
-                        'You can buy anything ranging from digital products to hardware within few clicks.',
+                        'Você pode comprar de tudo, de produtos digitais a hardware, em poucos cliques.',
                         textAlign: TextAlign.right,
                         style: TextStyle(color: Colors.grey, fontSize: 12.0),
                       ),
@@ -74,7 +74,7 @@ class _IntroPageState extends State<IntroPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'Shipping to anywhere ',
+                        'Entrega em qualquer lugar ',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
@@ -84,7 +84,7 @@ class _IntroPageState extends State<IntroPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 32, vertical: 16.0),
                       child: Text(
-                        'We will ship to anywhere in the world, With 30 day 100% money back policy.',
+                        'Entregamos em qualquer lugar do mundo, com política de devolução de 100% do dinheiro em 30 dias.',
                         textAlign: TextAlign.right,
                         style: TextStyle(color: Colors.grey, fontSize: 12.0),
                       ),
@@ -105,7 +105,7 @@ class _IntroPageState extends State<IntroPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'On-time delivery',
+                        'Entrega no prazo',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
@@ -115,7 +115,7 @@ class _IntroPageState extends State<IntroPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 32, vertical: 16.0),
                       child: Text(
-                        'You can track your product with our powerful tracking service.',
+                        'Você pode rastrear seu produto com nosso poderoso serviço de rastreamento.',
                         textAlign: TextAlign.right,
                         style: TextStyle(color: Colors.grey, fontSize: 12.0),
                       ),
@@ -170,7 +170,7 @@ class _IntroPageState extends State<IntroPage> {
                           child: FlatButton(
                             splashColor: Colors.transparent,
                             child: Text(
-                              'SKIP',
+                              'PULAR',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -187,7 +187,7 @@ class _IntroPageState extends State<IntroPage> {
                             ? FlatButton(
                                 splashColor: Colors.transparent,
                                 child: Text(
-                                  'NEXT',
+                                  'PRÓXIMO',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -203,7 +203,7 @@ class _IntroPageState extends State<IntroPage> {
                             : FlatButton(
                                 splashColor: Colors.transparent,
                                 child: Text(
-                                  'FINISH',
+                                  'CONCLUIR',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,

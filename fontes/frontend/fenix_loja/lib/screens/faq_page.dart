@@ -10,28 +10,28 @@ class FaqPage extends StatefulWidget {
 class _FaqPageState extends State<FaqPage> {
   List<Panel> panels = [
     Panel(
-        'HOW CAN I CHANGE MY SHIPPING ADDRESS?',
-        'By default, the last used shipping address will be saved intoto your Sample Store account. When you are checkingout your order, the default shipping address will be displayedand you have the option to amend it if you need to.',
+        'COMO POSSO ALTERAR MEU ENDEREÇO DE ENTREGA?',
+        'Por padrão, o último endereço de entrega utilizado será salvo na sua conta da loja. Ao finalizar seu pedido, o endereço de entrega padrão será exibido e você terá a opção de alterá-lo, se necessário.',
         false),
     Panel(
-        'HOW MANY FREE SAMPLES CAN I REDEEM?',
-        'Due to the limited quantity, each member`s account is only entitled to 1 unique free sample. You can check out up to 4 free samples in each checkout.',
+        'QUANTAS AMOSTRAS GRÁTIS POSSO RESGATAR?',
+        'Devido à quantidade limitada, cada conta de membro tem direito a apenas 1 amostra grátis exclusiva. Você pode incluir até 4 amostras grátis em cada compra.',
         false),
     Panel(
-        'HOW CAN I TRACK MY ORDERS & PAYMENT?',
-        'By default, the last used shipping address will be saved intoto your Sample Store account. When you are checkingout your order, the default shipping address will be displayedand you have the option to amend it if you need to.',
+        'COMO POSSO ACOMPANHAR MEUS PEDIDOS E PAGAMENTOS?',
+        'Por padrão, o último endereço de entrega utilizado será salvo na sua conta da loja. Ao finalizar seu pedido, o endereço de entrega padrão será exibido e você terá a opção de alterá-lo, se necessário.',
         false),
     Panel(
-        'HOW LONG WILL IT TAKE FOR MY ORDER TO ARRIVE AFTER I MAKE PAYMENT?',
-        'By default, the last used shipping address will be saved intoto your Sample Store account. When you are checkingout your order, the default shipping address will be displayedand you have the option to amend it if you need to.',
+        'QUANTO TEMPO MEU PEDIDO LEVA PARA CHEGAR APÓS O PAGAMENTO?',
+        'Por padrão, o último endereço de entrega utilizado será salvo na sua conta da loja. Ao finalizar seu pedido, o endereço de entrega padrão será exibido e você terá a opção de alterá-lo, se necessário.',
         false),
     Panel(
-        'HOW DO YOU SHIP MY ORDERS?',
-        'By default, the last used shipping address will be saved intoto your Sample Store account. When you are checkingout your order, the default shipping address will be displayedand you have the option to amend it if you need to.',
+        'COMO MEUS PEDIDOS SÃO ENVIADOS?',
+        'Por padrão, o último endereço de entrega utilizado será salvo na sua conta da loja. Ao finalizar seu pedido, o endereço de entrega padrão será exibido e você terá a opção de alterá-lo, se necessário.',
         false),
     Panel(
-        'HOW DO I MAKE PAYMENTS USING PAYPAL? HOW DOES IT WORK?',
-        'By default, the last used shipping address will be saved intoto your Sample Store account. When you are checkingout your order, the default shipping address will be displayedand you have the option to amend it if you need to.',
+        'COMO FAÇO PAGAMENTOS COM PAYPAL? COMO FUNCIONA?',
+        'Por padrão, o último endereço de entrega utilizado será salvo na sua conta da loja. Ao finalizar seu pedido, o endereço de entrega padrão será exibido e você terá a opção de alterá-lo, se necessário.',
         false)
   ];
 
@@ -46,7 +46,7 @@ class _FaqPageState extends State<FaqPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,

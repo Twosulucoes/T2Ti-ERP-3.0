@@ -21,7 +21,7 @@ class _LegalAboutPageState extends State<LegalAboutPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -36,7 +36,7 @@ class _LegalAboutPageState extends State<LegalAboutPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Text(
-                  'Legal & About',
+                  'Jurídico e sobre',
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -47,23 +47,23 @@ class _LegalAboutPageState extends State<LegalAboutPage> {
                 child: ListView(
                   children: <Widget>[
                     ListTile(
-                      title: Text('Terms of Use'),
+                      title: Text('Termos de uso'),
                       trailing: Icon(Icons.chevron_right),
                     ),
                     ListTile(
-                      title: Text('Privacy Policy'),
+                      title: Text('Política de privacidade'),
                       trailing: Icon(Icons.chevron_right),
                     ),
                     ListTile(
-                      title: Text('License'),
+                      title: Text('Licença'),
                       trailing: Icon(Icons.chevron_right),
                     ),
                     ListTile(
-                      title: Text('Seller Policy'),
+                      title: Text('Política do vendedor'),
                       trailing: Icon(Icons.chevron_right),
                     ),
                     ListTile(
-                      title: Text('Return Policy'),
+                      title: Text('Política de devolução'),
                       trailing: Icon(Icons.chevron_right),
                     ),
                   ],

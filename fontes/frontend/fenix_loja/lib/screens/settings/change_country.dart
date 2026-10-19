@@ -9,15 +9,15 @@ class ChangeCountryPage extends StatefulWidget {
 class _ChangeCountryPageState extends State<ChangeCountryPage> {
   List<String> languages = [
     'China',
-    'Spain',
-    'United Kindom',
-    'Romania',
-    'Germany',
+    'Espanha',
+    'Reino Unido',
+    'Romênia',
+    'Alemanha',
     'Portugal',
-    'Bengal',
-    'Russia',
-    'Japan',
-    'France',
+    'Bengala',
+    'Rússia',
+    'Japão',
+    'França',
   ];
 
   String currentCountry = '';
@@ -33,7 +33,7 @@ class _ChangeCountryPageState extends State<ChangeCountryPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -48,7 +48,7 @@ class _ChangeCountryPageState extends State<ChangeCountryPage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Text(
-                  'Change Country',
+                  'Alterar país',
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

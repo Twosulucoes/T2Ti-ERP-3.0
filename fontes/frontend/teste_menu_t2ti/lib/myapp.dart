@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
                 appTitle: UIData.coming_soon,
                 icon: FontAwesomeIcons.solidSmile,
                 title: UIData.coming_soon,
-                message: "Under Development",
+                message: "Em desenvolvimento",
                 iconColor: Colors.green,
               )));
 

@@ -67,7 +67,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              'Payment',
+                              'Pagamento',
                               style: TextStyle(
                                 color: darkGrey,
                                 fontSize: 22,
@@ -78,7 +78,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                      Text('Current account balance'),
+                      Text('Saldo atual da conta'),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Row(
@@ -86,7 +86,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              '\$',
+                              'R\$',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                               ),
                             ),
                             SizedBox(width: 8.0),
-                            Text('54.24',
+                            Text('54,24',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 48,
@@ -132,14 +132,14 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                                                         MaterialPageRoute(
                                                             builder: (_) =>
                                                                 SendPage())),
-                                                child: Text('Pay')),
+                                                child: Text('Pagar')),
                                             InkWell(
                                                 onTap: () =>
                                                     Navigator.of(context).push(
                                                         MaterialPageRoute(
                                                             builder: (_) =>
                                                                 RequestPage())),
-                                                child: Text('Request')),
+                                                child: Text('Solicitar')),
                                           ],
                                         ),
                                       ),
@@ -162,7 +162,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                                           width: 110,
                                           height: 110,
                                           child: Center(
-                                              child: Text('\$',
+                                              child: Text('R\$',
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           255, 255, 255, 0.5),
@@ -174,12 +174,12 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                            openOptions.value > 0 ? '' : 'Tap to pay / request',
+                            openOptions.value > 0 ? '' : 'Toque para pagar / solicitar',
                             style: TextStyle(fontSize: 10)),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Quick Money Request'),
+                        child: Text('Solicitação rápida de dinheiro'),
                       ),
                       Flexible(
                         child: Center(
@@ -268,7 +268,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Hot Deals'),
+                        child: Text('Ofertas imperdíveis'),
                       ),
                       Flexible(
                         child: Container(
@@ -299,7 +299,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                                       ),
                                       Padding(
                                        padding: const EdgeInsets.symmetric(vertical:8.0),
-                                        child: Text('Dicount Voucher',
+                                        child: Text('Cupom de desconto',
                                             style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 16.0,
@@ -307,7 +307,7 @@ class _WalletPageState extends State<WalletPage> with TickerProviderStateMixin {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(vertical:8.0),
-                                        child: Text('10% off on any pizzahut products',style: TextStyle(
+                                        child: Text('10% de desconto em qualquer produto Pizza Hut',style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 10.0,)),
                                       ),

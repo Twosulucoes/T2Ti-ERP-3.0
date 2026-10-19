@@ -165,7 +165,7 @@ class TimelineTwoPageState extends State<TimelineTwoPage> {
       backgroundColor: Colors.grey.shade900,
       appBar: AppBar(
         centerTitle: false,
-        title: Text("Tweet"),
+        title: Text("Publicar"),
       ),
       body: bodyData(),
       drawer: CommonDrawer(),

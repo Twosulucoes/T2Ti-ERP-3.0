@@ -29,7 +29,7 @@ class _UnpaidPageState extends State<UnpaidPage> {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Pay Now",
+          child: Text("Pagar agora",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class _UnpaidPageState extends State<UnpaidPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Text(
-                                    'Unpaid',
+                                    'Não pago',
                                     style: TextStyle(
                                       color: darkGrey,
                                       fontSize: 22,
@@ -84,19 +84,19 @@ class _UnpaidPageState extends State<UnpaidPage> {
                                 children: <Widget>[
                                   ListTile(
                                     title: Text('Boat Rockerz 350 On-Ear ..'),
-                                    trailing: Text('74.68'),
+                                    trailing: Text('74,68'),
                                   ),
                                   ListTile(
-                                    title: Text('Tax'),
-                                    trailing: Text('1.25'),
+                                    title: Text('Impostos'),
+                                    trailing: Text('1,25'),
                                   ),
                                   ListTile(
                                     title: Text('Subtotal'),
-                                    trailing: Text('76.93'),
+                                    trailing: Text('76,93'),
                                   ),
                                   ListTile(
-                                    title: Text('Promocode'),
-                                    trailing: Text('-10.93'),
+                                    title: Text('Código promocional'),
+                                    trailing: Text('-10,93'),
                                   ),
                                   Divider(),
                                   ListTile(
@@ -105,7 +105,7 @@ class _UnpaidPageState extends State<UnpaidPage> {
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold
                                       ),),
-                                    trailing: Text('\$ 66.93',style:
+                                    trailing: Text('R\$ 66,93',style:
                                     TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold

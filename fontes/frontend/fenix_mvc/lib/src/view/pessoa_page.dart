@@ -203,7 +203,7 @@ class PessoaPageState extends State<PessoaPage> with SingleTickerProviderStateMi
                     aba.icon,
                     color: iconColor,
                     size: 128.0,
-                    semanticLabel: 'Placeholder for ${aba.text} tab',
+                    semanticLabel: 'Espaço reservado para a aba ${aba.text}',
                   ),
                 ),
               )

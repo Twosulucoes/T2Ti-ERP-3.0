@@ -11,14 +11,14 @@ class                            WelcomeBackPage extends StatefulWidget {
 
 class _WelcomeBackPageState extends State<WelcomeBackPage> {
   TextEditingController email =
-      TextEditingController(text: 'example@email.com');
+      TextEditingController(text: 'exemplo@email.com');
 
   TextEditingController password = TextEditingController(text: '12345678');
 
   @override
   Widget build(BuildContext context) {
     Widget welcomeBack = Text(
-      'Welcome Back Roberto,',
+      'Bem-vindo de volta, Roberto,',
       style: TextStyle(
           color: Colors.white,
           fontSize: 34.0,
@@ -35,7 +35,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
     Widget subTitle = Padding(
         padding: const EdgeInsets.only(right: 56.0),
         child: Text(
-          'Login to your account using\nMobile number',
+          'Entre na sua conta usando\no número do celular',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16.0,
@@ -54,7 +54,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           width: MediaQuery.of(context).size.width / 2,
           height: 80,
           child: Center(
-              child: new Text("Log In",
+              child: new Text("Entrar",
                   style: const TextStyle(
                       color: const Color(0xfffefefe),
                       fontWeight: FontWeight.w600,
@@ -126,7 +126,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'Forgot your password? ',
+            'Esqueceu sua senha? ',
             style: TextStyle(
               fontStyle: FontStyle.italic,
               color: Color.fromRGBO(255, 255, 255, 0.5),
@@ -136,7 +136,7 @@ class _WelcomeBackPageState extends State<WelcomeBackPage> {
           InkWell(
             onTap: () {},
             child: Text(
-              'Reset password',
+              'Redefinir senha',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

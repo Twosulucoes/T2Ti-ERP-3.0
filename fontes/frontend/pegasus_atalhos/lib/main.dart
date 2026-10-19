@@ -140,7 +140,7 @@ class _FADState extends State<FAD> {
       shortcuts: _shortcutMap,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Focusable Action Detector'),
+          title: const Text('Detector de ações focáveis'),
           actions: [
           ],
         ),
