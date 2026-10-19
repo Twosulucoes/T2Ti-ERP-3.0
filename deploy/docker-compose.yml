@@ -1,0 +1,71 @@
+# T2Ti ERP 3.0 - módulo Cadastros em produção (MySQL + backend PHP + front React).
+# Uso: copie .env.exemplo para .env, preencha os valores e rode: docker compose up -d --build
+name: t2ti-erp
+
+services:
+  mysql:
+    image: mysql:8.4
+    command:
+      - --lower-case-table-names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?defina no .env}
+      MYSQL_DATABASE: fenix
+      MYSQL_USER: ${MYSQL_USER:-erp}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?defina no .env}
+      ADMIN_LOGIN: ${ADMIN_LOGIN:?defina no .env}
+      ADMIN_SENHA: ${ADMIN_SENHA:?defina no .env}
+      TZ: America/Sao_Paulo
+    volumes:
+      - mysql-dados:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ..
+      dockerfile: deploy/cadastros/backend.Dockerfile
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: fenix
+      DB_USERNAME: ${MYSQL_USER:-erp}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      CHAVE_CRIPTOGRAFIA: ${CHAVE_CRIPTOGRAFIA:?defina no .env}
+      VETOR_CRIPTOGRAFIA: ${VETOR_CRIPTOGRAFIA:?defina no .env}
+      EXIGIR_TOKEN: "true"
+      MOSTRAR_DETALHES_ERRO: "false"
+      TZ: America/Sao_Paulo
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/cadastros/frontend.Dockerfile
+      args:
+        VITE_CHAVE_CRIPTOGRAFIA: ${CHAVE_CRIPTOGRAFIA}
+        VITE_VETOR_CRIPTOGRAFIA: ${VETOR_CRIPTOGRAFIA}
+    environment:
+      DOMINIO: ${DOMINIO:?defina no .env}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-dados:/data
+      - caddy-config:/config
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mysql-dados:
+  caddy-dados:
+  caddy-config:
