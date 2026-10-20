@@ -1,0 +1,56 @@
+name: Pegasus PDV (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'fontes/frontend/pegasus_pdv/**'
+      - '.github/workflows/pegasus-pdv-windows.yml'
+
+jobs:
+  build:
+    runs-on: windows-2022
+    defaults:
+      run:
+        working-directory: fontes/frontend/pegasus_pdv
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.5'
+          channel: stable
+
+      - name: Preparar projeto Windows
+        shell: bash
+        run: |
+          flutter config --enable-windows-desktop
+          flutter create --platforms=windows --org com.t2ti .
+          flutter pub get
+
+      - name: Gerar .env cifrado
+        shell: bash
+        run: >
+          dart run tool/gerar_env.dart
+          SENTRY_DNS=DNS
+          LINGUAGEM_SERVIDOR=php
+          ENDERECO_SERVIDOR=https://erp.169.58.144.179.sslip.io
+          PORTA_SERVIDOR=443
+          COMPLEMENTO_ENDERECO_SERVIDOR=/api/pdv
+
+      - name: Compilar
+        run: flutter build windows --release
+
+      - name: Montar pacote
+        shell: pwsh
+        run: |
+          $origem = 'build/windows/x64/runner/Release'
+          if (-not (Test-Path $origem)) { $origem = 'build/windows/runner/Release' }
+          Copy-Item sqlite3.dll $origem -Force
+          New-Item -ItemType Directory -Force pacote | Out-Null
+          Copy-Item "$origem/*" pacote -Recurse -Force
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Pegasus-PDV-Windows
+          path: fontes/frontend/pegasus_pdv/pacote
