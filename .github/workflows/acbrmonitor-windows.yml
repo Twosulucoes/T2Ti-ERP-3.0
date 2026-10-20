@@ -29,6 +29,8 @@ jobs:
           if (-not $lazarus) { $lazarus = Get-ChildItem 'C:\Program Files*\Lazarus*' -Recurse -Filter lazbuild.exe | Select-Object -First 1 }
           "LAZBUILD=$($lazarus.FullName)" | Out-File $env:GITHUB_ENV -Append
           "C:\Program Files\SlikSvn\bin" | Out-File $env:GITHUB_PATH -Append
+          $fpc = Get-ChildItem (Split-Path $lazarus.FullName) -Recurse -Filter fpc.exe | Select-Object -First 1
+          (Split-Path $fpc.FullName) | Out-File $env:GITHUB_PATH -Append
           & $lazarus.FullName --version
 
       - name: Baixar fontes do ACBr
@@ -40,11 +42,24 @@ jobs:
           }
           svn info -r $env:REVISAO $env:ACBR_SVN | Select-String 'Revision'
           git clone --depth 1 https://github.com/fortesinformatica/fortesreport-ce.git fortesreport
+          # PowerPDF (usado pelo lazreportpdfexport) não vem mais junto com o Lazarus 4
+          if (-not (Get-ChildItem C:\lazarus\components -Recurse -Filter pack_powerpdf.lpk)) {
+            New-Item -ItemType Directory -Force terceiros | Out-Null
+            $url = 'https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_2_2_6/lazarus-lazarus_2_2_6.zip?path=components/powerpdf'
+            try {
+              $lista = Invoke-RestMethod https://packages.lazarus-ide.org/packagelist.json
+              $item = $lista.PSObject.Properties.Value | Where-Object { $_.RepositoryFileName -match 'powerpdf' } | Select-Object -First 1
+              if ($item) { $url = "https://packages.lazarus-ide.org/$($item.RepositoryFileName)" }
+            } catch { }
+            "PowerPDF: $url"
+            Invoke-WebRequest $url -OutFile powerpdf.zip
+            Expand-Archive powerpdf.zip terceiros/powerpdf
+          }
 
       - name: Registrar pacotes
         shell: pwsh
         run: |
-          $pacotes = Get-ChildItem acbr/Pacotes/Lazarus, fortesreport -Recurse -Filter *.lpk
+          $pacotes = Get-ChildItem acbr/Pacotes/Lazarus, fortesreport, terceiros -Recurse -Filter *.lpk -ErrorAction SilentlyContinue
           foreach ($pacote in $pacotes) {
             & $env:LAZBUILD --add-package-link $pacote.FullName | Out-Null
           }
