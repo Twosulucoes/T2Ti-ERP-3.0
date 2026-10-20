@@ -543,7 +543,7 @@ const htmlData = r"""
    <div style="text-align: center;"><b style="background-color: transparent;"><font style="color: #0000ff; font-size: 24px;">TERMOS GERAIS E CONDIÇÕES DE USO</font></b></div>
    <div>&nbsp;</div>
    <div><br></div>
-   <div>Este instrumento contém os termos gerais e condições de uso do SOFTWARE Nortix disponibilizado pela <b>[RAZÃO SOCIAL]</b>, pessoa jurídica de direito privado, com sede em [ENDEREÇO], na cidade de Boa Vista, Roraima, inscrita no CNPJ sob o nº [CNPJ], doravante denominada NORTIX.&nbsp;</div>
+   <div>Este instrumento contém os termos gerais e condições de uso do SOFTWARE Nortix disponibilizado pela <b>TWO SOLUÇÕES</b>, pessoa jurídica de direito privado, com sede em [ENDEREÇO], na cidade de Boa Vista, Roraima, inscrita no CNPJ sob o nº [CNPJ], doravante denominada NORTIX.&nbsp;</div>
    <div><br></div>
    <div><br></div>
    <div>

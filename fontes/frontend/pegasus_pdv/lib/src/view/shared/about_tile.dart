@@ -61,7 +61,8 @@ class MyAboutTile extends StatelessWidget {
         ),
         Text(
           // ignore: prefer_interpolation_to_compose_strings
-          "Você está usando o ${Constantes.nomeApp}. \n\n"
+          "Você está usando o ${Constantes.nomeApp}, \n"
+          "desenvolvido pela Two Soluções. \n\n"
           "Baseado no T2Ti ERP 3.0, de T2Ti.COM, \n"
           "distribuído sob a licença MIT. \n\n"
           "Caminho para o banco de dados: \n" + 
