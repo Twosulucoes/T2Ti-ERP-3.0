@@ -36,6 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 Based on: Flutter UIKit by Pawan Kumar - https://github.com/iampawan/Flutter-UI-Kit
 *******************************************************************************/
 import 'package:flutter/material.dart';
+import 'package:pegasus_pdv/src/infra/infra.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pegasus_pdv/src/controller/controller.dart';
 
@@ -55,7 +56,7 @@ class MenuFood extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("T2Ti Pegasus PDV - Food"),
+        title: const Text("${Constantes.nomeApp} - Food"),
         backgroundColor: Colors.black87,
       ),
       // drawer: CommonDrawer(),
@@ -93,7 +94,7 @@ class MenuFood extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ProfileTile(
-                    title: "T2Ti Pegasus PDV",
+                    title: Constantes.nomeApp,
                     subtitle: "Módulo Food",
                     textColor: Colors.white,
                   ),

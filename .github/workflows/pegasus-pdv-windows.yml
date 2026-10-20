@@ -28,6 +28,17 @@ jobs:
           flutter create --platforms=windows --org com.t2ti .
           flutter pub get
 
+      - name: Aplicar a marca Nortix no executável
+        shell: bash
+        run: |
+          cp assets/images/nortix.ico windows/runner/resources/app_icon.ico
+          sed -i 's/set(BINARY_NAME "pegasus_pdv")/set(BINARY_NAME "Nortix")/' windows/CMakeLists.txt
+          sed -i 's/window.Create(L"pegasus_pdv"/window.Create(L"Nortix"/' windows/runner/main.cpp
+          sed -i -e 's/"CompanyName", "com.t2ti"/"CompanyName", "Nortix"/' -e 's/"FileDescription", "pegasus_pdv"/"FileDescription", "Nortix"/' -e 's/"ProductName", "pegasus_pdv"/"ProductName", "Nortix"/' -e 's/"InternalName", "pegasus_pdv"/"InternalName", "Nortix"/' -e 's/"OriginalFilename", "pegasus_pdv.exe"/"OriginalFilename", "Nortix.exe"/' windows/runner/Runner.rc
+          grep -n 'BINARY_NAME "' windows/CMakeLists.txt
+          grep -n 'window.Create' windows/runner/main.cpp
+          grep -n 'Name"\|Description"\|Filename"' windows/runner/Runner.rc
+
       - name: Gerar .env cifrado
         shell: bash
         run: >
@@ -52,5 +63,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Pegasus-PDV-Windows
+          name: Nortix-Windows
           path: fontes/frontend/pegasus_pdv/pacote

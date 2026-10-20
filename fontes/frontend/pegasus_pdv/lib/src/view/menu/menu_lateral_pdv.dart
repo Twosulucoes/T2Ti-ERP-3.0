@@ -447,24 +447,12 @@ class MenuLateralPDVState extends State<MenuLateralPDV> {
             ),
             ListTile(
               onTap: () async { 
-                // final Uri _emailLaunchUri = Uri(
-                //   scheme: 'mailto',
-                //   path: 't2ti.com@gmail.com',
-                //   queryParameters: {
-                //     'subject': 'T2Ti ERP Pegasus - Dúvidas'
-                //   }
-                // );
-                // launch(_emailLaunchUri.toString());
-                // Navigator.pop(context); 
-
-                // %0D - serve para inserir uma quebra de linha
-                // ignore: prefer_interpolation_to_compose_strings
-                final url = 'https://t2tisistemas.com/contact.php?'
-                'nome=' + Sessao.empresa!.nomeFantasia! + 
-                '&email=' + Sessao.empresa!.email! + 
-                '&assunto=Contato Pegasus PDV&mensagem='
-                'Olá Equipe T2Ti,'
-                '%0DEstou usando o T2Ti Pegasus PDV e preciso do seguinte auxílio: ';
+                if (Constantes.whatsappSuporte.isEmpty) {
+                  showInSnackBar('O contato do suporte ainda não foi configurado.', context);
+                  return;
+                }
+                final mensagem = Uri.encodeComponent('Olá, sou da empresa ${Sessao.empresa!.nomeFantasia ?? ''} e preciso de ajuda com o ${Constantes.nomeApp}: ');
+                final url = 'https://wa.me/${Constantes.whatsappSuporte}?text=$mensagem';
                 // ignore: deprecated_member_use
                 await canLaunch(url) ? await launch(url) : throw 'URL não pode ser carregada: $url';
                 if (!mounted) return;

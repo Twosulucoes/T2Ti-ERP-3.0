@@ -110,7 +110,7 @@ flutter:
      - .env
 
 msix_config:
-  display_name: T2Ti Pegasus PDV
+  display_name: Nortix
   publisher_display_name: T2Ti.COM
   identity_name: T2Ti.COM.T2TiPegasusPDV
   msix_version: 1.0.10.0

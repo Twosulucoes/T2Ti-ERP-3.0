@@ -63,7 +63,7 @@ class SplashScreenPage extends StatelessWidget {
                   height: 10.0,
                 ),
                 const Text(
-                  "T2Ti Pegasus PDV",
+                  Constantes.nomeApp,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25.0,
@@ -127,7 +127,7 @@ class SplashScreenPage extends StatelessWidget {
     //                   height: 10.0,
     //                 ),
     //                 Text(
-    //                    "T2Ti Pegasus PDV",
+    //                    Constantes.nomeApp,
     //                    style: TextStyle(
     //                      color: Colors.white,
     //                      fontSize: 25.0,

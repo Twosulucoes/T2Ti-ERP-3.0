@@ -73,7 +73,7 @@ class ConfiguracaoAbaCadastroState extends State<ConfiguracaoAbaCadastro> {
     switch (widget.modulo) {
       case 'NFC':
         _textoInformativo = 'Em breve você poderá emitir NFC-e a partir deste sistema. Se quiser receber informações sobre '
-                            'a emissão da NFC-e a partir do Pegasus PDV, informe seus dados abaixo.';        
+                            'a emissão da NFC-e a partir do ${Constantes.nomeApp}, informe seus dados abaixo.';        
         break;
       case 'SAT':
         _textoInformativo = 'Após a contratação do plano SAT, você poderá configurar os dados do SAT aqui';

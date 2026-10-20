@@ -53,7 +53,7 @@ class MenuCadastros extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("T2Ti Pegasus PDV - Cadastros"),
+        title: const Text("${Constantes.nomeApp} - Cadastros"),
         backgroundColor: Colors.black87,
       ),
       // drawer: CommonDrawer(),
@@ -97,7 +97,7 @@ class MenuCadastros extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ProfileTile(
-                    title: "T2Ti Pegasus PDV",
+                    title: Constantes.nomeApp,
                     subtitle: "Módulo Cadastros",
                     textColor: Colors.white,
                   ),
