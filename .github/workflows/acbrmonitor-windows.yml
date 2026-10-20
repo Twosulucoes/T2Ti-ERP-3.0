@@ -9,9 +9,7 @@ on:
       revisao:
         description: 'Revisão do SVN do ACBr (HEAD para a mais recente)'
         default: 'HEAD'
-  push:
-    paths:
-      - '.github/workflows/acbrmonitor-windows.yml'
+  workflow_call:
 
 env:
   ACBR_SVN: https://svn.code.sf.net/p/acbr/code/trunk2

@@ -1,11 +1,9 @@
 name: Pegasus PDV (Windows)
 
+# Chamado pelo nortix-instalador.yml; também pode ser rodado sozinho.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'fontes/frontend/pegasus_pdv/**'
-      - '.github/workflows/pegasus-pdv-windows.yml'
+  workflow_call:
 
 jobs:
   build:
