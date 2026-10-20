@@ -1,0 +1,56 @@
+name: Nortix - teste de abertura
+
+# Instala o instalador publicado (release nortix-teste) num Windows limpo,
+# abre o Nortix e registra no log se a janela apareceu e o que o app escreveu.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/nortix-teste-abrir.yml'
+
+jobs:
+  abrir:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Baixar e instalar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download nortix-teste --repo $env:GITHUB_REPOSITORY --pattern Nortix-Instalador.exe --dir $env:RUNNER_TEMP
+          $p = Start-Process "$env:RUNNER_TEMP\Nortix-Instalador.exe" -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/TASKS=atalho','/LOG=C:\nortix-setup.log' -Wait -PassThru
+          "instalador saiu com $($p.ExitCode)"
+          Get-ChildItem 'C:\Program Files\Nortix' | Select-Object Name, Length | Format-Table -AutoSize | Out-String -Width 200
+
+      - name: Abrir pelo atalho (pasta de trabalho padrão)
+        run: |
+          Set-Location C:\Windows\System32
+          $p = Start-Process 'C:\Program Files\Nortix\Nortix.exe' -RedirectStandardOutput C:\nortix-out.txt -RedirectStandardError C:\nortix-err.txt -PassThru
+          Start-Sleep -Seconds 25
+          $p.Refresh()
+          "terminou: $($p.HasExited)"
+          if ($p.HasExited) { "código de saída: $($p.ExitCode)" } else { "janela: '$($p.MainWindowTitle)' handle $($p.MainWindowHandle)" }
+          '--- stdout ---'; Get-Content C:\nortix-out.txt -ErrorAction SilentlyContinue
+          '--- stderr ---'; Get-Content C:\nortix-err.txt -ErrorAction SilentlyContinue
+          '--- banco ---'; Get-ChildItem ([Environment]::GetFolderPath('MyDocuments')) -Filter *.sqlite -ErrorAction SilentlyContinue
+          if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
+
+      - name: Abrir de dentro da pasta do programa
+        run: |
+          Set-Location 'C:\Program Files\Nortix'
+          $p = Start-Process '.\Nortix.exe' -WorkingDirectory 'C:\Program Files\Nortix' -RedirectStandardOutput C:\nortix-out2.txt -RedirectStandardError C:\nortix-err2.txt -PassThru
+          Start-Sleep -Seconds 25
+          $p.Refresh()
+          "terminou: $($p.HasExited)"
+          if ($p.HasExited) { "código de saída: $($p.ExitCode)" } else { "janela: '$($p.MainWindowTitle)' handle $($p.MainWindowHandle)" }
+          '--- stdout ---'; Get-Content C:\nortix-out2.txt -ErrorAction SilentlyContinue
+          '--- stderr ---'; Get-Content C:\nortix-err2.txt -ErrorAction SilentlyContinue
+          if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
+
+      - name: Erros do Windows
+        if: always()
+        run: |
+          Get-WinEvent -FilterHashtable @{LogName='Application'; Level=2; StartTime=(Get-Date).AddMinutes(-15)} -ErrorAction SilentlyContinue | Select-Object -First 10 | Format-List TimeCreated, ProviderName, Message | Out-String -Width 300
