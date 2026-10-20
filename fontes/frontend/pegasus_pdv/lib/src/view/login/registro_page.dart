@@ -543,7 +543,7 @@ const htmlData = r"""
    <div style="text-align: center;"><b style="background-color: transparent;"><font style="color: #0000ff; font-size: 24px;">TERMOS GERAIS E CONDIÇÕES DE USO</font></b></div>
    <div>&nbsp;</div>
    <div><br></div>
-   <div>Este instrumento contém os termos gerais e condições de uso do SOFTWARE Nortix disponibilizado pela <b>TWO SOLUÇÕES</b>, pessoa jurídica de direito privado, com sede em [ENDEREÇO], na cidade de Boa Vista, Roraima, inscrita no CNPJ sob o nº [CNPJ], doravante denominada NORTIX.&nbsp;</div>
+   <div>Este instrumento contém os termos gerais e condições de uso do SOFTWARE Nortix disponibilizado pela <b>A L BARBOSA DE ASSIS INOVACAO LTDA</b> (nome fantasia TWO SOLUÇÕES), pessoa jurídica de direito privado, com sede na Av. Carlos Gomes, nº 700, bairro Boa Vista, na cidade de Porto Alegre, Rio Grande do Sul, CEP 90480-000, inscrita no CNPJ sob o nº 66.306.860/0001-66, doravante denominada NORTIX.&nbsp;</div>
    <div><br></div>
    <div><br></div>
    <div>
@@ -892,7 +892,7 @@ const htmlData = r"""
    <div><br></div>
    <div>6.3.1.  O notificante declarará que as informações contidas na notificação são precisas e verdadeiras, sob pena de incorrer nas consequentes responsabilidades cíveis e penais, e que o notificante está autorizado a agir em nome do titular do direito supostamente violado.</div>
    <div><br></div>
-   <div>6.4.     As notificações deverão ser encaminhadas à PLATAFORMA para o seguinte e-mail: [E-MAIL DE CONTATO].</div>
+   <div>6.4.     As notificações deverão ser encaminhadas à PLATAFORMA para o seguinte e-mail: solucoestwo@gmail.com.</div>
 
    <div><br></div>
    <div><br></div>
@@ -1123,7 +1123,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>17.1. O presente contrato será regido pela legislação brasileira, elegendo as partes o Foro de Boa Vista, Roraima, 
+   <div>17.1. O presente contrato será regido pela legislação brasileira, elegendo as partes o Foro de Porto Alegre, Rio Grande do Sul, 
    como único competente para conhecer e dirimir quaisquer questões oriundas do presente Contrato, com expressa renúncia a qualquer outro, 
    por mais privilegiado que seja.</div>
    <div><br></div>
