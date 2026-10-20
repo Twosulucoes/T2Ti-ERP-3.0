@@ -80,6 +80,8 @@ jobs:
           Copy-Item acbr/Projetos/ACBrMonitorPLUS/Lazarus/ACBrIBGE.txt, acbr/Projetos/ACBrMonitorPLUS/Lazarus/LICENSE.TXT ACBrMonitor/
           Copy-Item acbr/DLLs/OpenSSL/3.1.3/x64/* ACBrMonitor/ -Recurse
           Copy-Item acbr/DLLs/LibXml2/x64/* ACBrMonitor/ -Recurse
+          # já liga a monitoração por ENT.TXT/SAI.TXT, que é como o Pegasus PDV conversa com o monitor
+          "[ACBrMonitor]`r`nModo_TCP=0`r`nModo_TXT=1`r`nTXT_Entrada=ENT.TXT`r`nTXT_Saida=SAI.TXT`r`n" | Set-Content ACBrMonitor/ACBrMonitor.ini -Encoding ascii -NoNewline
           Get-ChildItem ACBrMonitor -Recurse | Select-Object FullName, Length
 
       - uses: actions/upload-artifact@v4
