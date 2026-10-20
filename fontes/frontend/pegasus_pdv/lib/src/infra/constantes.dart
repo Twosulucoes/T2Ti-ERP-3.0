@@ -112,10 +112,10 @@ class Constantes {
 
 
 // #region Strings
-  static const String dadosSoftwareHouse =  'Nortix - Two Soluções';
+  static const String dadosSoftwareHouse =  'Nortix - Two Soluções - WhatsApp: (95) 98114-2516';
   static const String nomeApp =  'Nortix';
   /// número de WhatsApp do suporte, só dígitos com DDI e DDD (ex.: 5595999999999); vazio esconde o contato
-  static const String whatsappSuporte = '';
+  static const String whatsappSuporte = '5595981142516';
   static const String menuCadastrosString = 'Nortix - Cadastros';
   static const String menuFinanceiroString = 'Nortix - Financeiro';
   static const String menuTributacaoString = 'Nortix - Tributação';
