@@ -52,6 +52,19 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'falha ao gerar o instalador' }
           Get-ChildItem saida
 
+      # instala num Windows limpo e confere que o Nortix sobe sem erro antes de publicar
+      - name: Testar a abertura do Nortix
+        run: |
+          $instalador = (Get-ChildItem saida/*.exe | Select-Object -First 1).FullName
+          Start-Process $instalador -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/TASKS=atalho' -Wait
+          $p = Start-Process 'C:\Program Files\Nortix\Nortix.exe' -RedirectStandardError $env:RUNNER_TEMP\nortix-err.txt -RedirectStandardOutput $env:RUNNER_TEMP\nortix-out.txt -PassThru
+          Start-Sleep -Seconds 25
+          $erros = Get-Content $env:RUNNER_TEMP\nortix-err.txt -Raw -ErrorAction SilentlyContinue
+          $erros
+          if ($p.HasExited) { throw "o Nortix fechou sozinho (código $($p.ExitCode))" }
+          Stop-Process -Id $p.Id -Force
+          if ($erros -match 'Unhandled Exception') { throw 'o Nortix deu erro ao abrir' }
+
       - uses: actions/upload-artifact@v4
         with:
           name: Nortix-Instalador

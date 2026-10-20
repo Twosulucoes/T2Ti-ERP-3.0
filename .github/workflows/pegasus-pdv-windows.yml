@@ -58,8 +58,11 @@ jobs:
           Copy-Item sqlite3.dll $origem -Force
           New-Item -ItemType Directory -Force pacote | Out-Null
           Copy-Item "$origem/*" pacote -Recurse -Force
+          if (-not (Test-Path pacote/data/flutter_assets/.env)) { throw 'o .env não entrou no pacote' }
 
       - uses: actions/upload-artifact@v4
         with:
           name: Nortix-Windows
           path: fontes/frontend/pegasus_pdv/pacote
+          # o .env cifrado fica em data/flutter_assets/.env; sem isto o upload o descarta
+          include-hidden-files: true
