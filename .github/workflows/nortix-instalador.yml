@@ -21,6 +21,8 @@ jobs:
   instalador:
     needs: [pdv, acbr]
     runs-on: windows-2022
+    permissions:
+      contents: write
     defaults:
       run:
         shell: pwsh
@@ -54,3 +56,14 @@ jobs:
         with:
           name: Nortix-Instalador
           path: fontes/frontend/pegasus_pdv/instalador/saida/*.exe
+
+      # link direto e fixo para baixar sem login no GitHub:
+      # https://github.com/<dono>/<repo>/releases/download/nortix-teste/Nortix-Instalador.exe
+      - name: Publicar o instalador para download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Copy-Item (Get-ChildItem saida/*.exe | Select-Object -First 1).FullName Nortix-Instalador.exe
+          gh release delete nortix-teste --yes --cleanup-tag 2>$null
+          gh release create nortix-teste Nortix-Instalador.exe --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --prerelease --title 'Nortix - versão de teste' --notes "Instalador gerado do commit $env:GITHUB_SHA."
+          if ($LASTEXITCODE -ne 0) { throw 'falha ao publicar o instalador' }
