@@ -52,7 +52,16 @@ class Constantes {
   static Constantes? _this;
   Constantes._() : super();
 
-  static const String versaoApp =  'versão 1.0.10 - Dezembro/2021';
+  static const String versaoApp =  'versão 1.1.0 - Outubro/2026';
+
+// #region NFC-e local
+  /// true = emite a NFC-e pelo ACBrMonitor instalado neste computador, sem servidor de retaguarda e sem plano pago
+  static const bool nfceLocal = true;
+  /// pasta do ACBrMonitor; nela ficam o ACBrMonitor.ini e os arquivos ent.txt/sai.txt monitorados
+  static const String caminhoAcbrMonitor = 'C:\\ACBrMonitor\\';
+  /// segundos de espera pela resposta do ACBrMonitor
+  static const int tempoEsperaAcbrMonitor = 60;
+// #endregion NFC-e local
 
 // #region Arquivo ENV
   static String chave = '#Sua-Chave-de-32-caracteres-aqui'; // #Sua-Chave-de-32-caracteres-aqui tem que alterar para produção e gerar os valores do ENV com a chave correta
@@ -103,19 +112,21 @@ class Constantes {
 
 
 // #region Strings
-  static const String dadosSoftwareHouse =  'T2Ti.COM - WhatsApp: (61) 99610.3234';
-  static const String nomeApp =  'T2Ti Pegasus PDV';
-  static const String menuCadastrosString = 'T2Ti ERP Fenix - Cadastros';
-  static const String menuFinanceiroString = 'T2Ti ERP Fenix - Financeiro';
-  static const String menuTributacaoString = 'T2Ti ERP Fenix - Tributação';
-  static const String menuEstoqueString = 'T2Ti ERP Fenix - Estoque';
-  static const String menuVendasString = 'T2Ti ERP Fenix - Vendas';
-  static const String menuComprasString = 'T2Ti ERP Fenix - Compras';
-  static const String menuComissoesString = 'T2Ti ERP Fenix - Gestão de Comissões';
-  static const String menuOsString = 'T2Ti ERP Fenix - Ordem de Serviço';
-  static const String menuAfvString = 'T2Ti ERP Fenix - AFV';
-  static const String menuNfseString = 'T2Ti ERP Fenix - NFS-e';
-  static const String menuCTeString = "T2Ti ERP Fenix - CT-e";
+  static const String dadosSoftwareHouse =  'Nortix - Two Soluções - WhatsApp: (95) 98114-2516';
+  static const String nomeApp =  'Nortix';
+  /// número de WhatsApp do suporte, só dígitos com DDI e DDD (ex.: 5595999999999); vazio esconde o contato
+  static const String whatsappSuporte = '5595981142516';
+  static const String menuCadastrosString = 'Nortix - Cadastros';
+  static const String menuFinanceiroString = 'Nortix - Financeiro';
+  static const String menuTributacaoString = 'Nortix - Tributação';
+  static const String menuEstoqueString = 'Nortix - Estoque';
+  static const String menuVendasString = 'Nortix - Vendas';
+  static const String menuComprasString = 'Nortix - Compras';
+  static const String menuComissoesString = 'Nortix - Gestão de Comissões';
+  static const String menuOsString = 'Nortix - Ordem de Serviço';
+  static const String menuAfvString = 'Nortix - AFV';
+  static const String menuNfseString = 'Nortix - NFS-e';
+  static const String menuCTeString = "Nortix - CT-e";
 
   static const String tituloAbaDetalhePrincipal = 'Detalhes';
 

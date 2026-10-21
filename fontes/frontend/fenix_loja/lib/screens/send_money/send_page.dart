@@ -48,7 +48,7 @@ class _SendPageState extends State<SendPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Send Amount',
+          'Enviar valor',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -65,7 +65,7 @@ class _SendPageState extends State<SendPage> {
               child: TextField(
                 cursorColor: darkGrey,
                 decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'Pesquisar',
                     contentPadding: EdgeInsets.zero,
                     border: InputBorder.none,
                     prefixIcon: SvgPicture.asset('assets/icons/search_icon.svg', fit: BoxFit.scaleDown,),
@@ -75,14 +75,14 @@ class _SendPageState extends State<SendPage> {
                           // searchResults.clear();
                         },
                         child: Text(
-                          'Clear',
+                          'Limpar',
                           style: TextStyle(color: Colors.red),
                         ))),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
-              child: Text('Frequent Contacts'),
+              child: Text('Contatos frequentes'),
             ),
             Expanded(
                 child: Center(
@@ -151,7 +151,7 @@ class _SendPageState extends State<SendPage> {
                 )),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-              child: Text('Your Contacts'),
+              child: Text('Seus contatos'),
             ),
             Expanded(
                 flex: 2,
@@ -213,7 +213,7 @@ class _SendPageState extends State<SendPage> {
                                               ),
                                               Spacer(),
                                               Text(
-                                                'Send as a gift',
+                                                'Enviar como presente',
                                                 style:
                                                     TextStyle(fontSize: 10.0),
                                               )

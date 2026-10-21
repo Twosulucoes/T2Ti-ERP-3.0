@@ -11,9 +11,9 @@ class NotFoundPage extends StatelessWidget {
   final iconColor;
 
   NotFoundPage(
-      {this.appTitle = "Search",
-      this.title = "No Result",
-      this.message = "Try a more general keyword.",
+      {this.appTitle = "Pesquisar",
+      this.title = "Nenhum resultado",
+      this.message = "Tente uma palavra-chave mais genérica.",
       this.icon = Icons.search,
       this.image,
       this.iconColor = Colors.black});

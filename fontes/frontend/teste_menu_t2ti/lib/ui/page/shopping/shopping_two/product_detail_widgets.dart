@@ -27,7 +27,7 @@ class ProductDetailWidgets extends StatelessWidget {
                     Navigator.canPop(context) ? Navigator.pop(context) : null,
               ),
               new Text(
-                "Product Detail",
+                "Detalhes do produto",
                 style: new TextStyle(color: Colors.white, fontSize: 20.0),
               ),
               new Opacity(

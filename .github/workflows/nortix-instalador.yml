@@ -1,0 +1,82 @@
+name: Nortix - instalador Windows
+
+# Compila o Nortix e o ACBrMonitor e junta os dois num instalador (Inno Setup).
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'fontes/frontend/pegasus_pdv/**'
+      - '.github/workflows/nortix-instalador.yml'
+      - '.github/workflows/pegasus-pdv-windows.yml'
+      - '.github/workflows/acbrmonitor-windows.yml'
+
+jobs:
+  pdv:
+    uses: ./.github/workflows/pegasus-pdv-windows.yml
+
+  acbr:
+    uses: ./.github/workflows/acbrmonitor-windows.yml
+
+  instalador:
+    needs: [pdv, acbr]
+    runs-on: windows-2022
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: fontes/frontend/pegasus_pdv/instalador
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: Nortix-Windows
+          path: fontes/frontend/pegasus_pdv/instalador/pdv
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ACBrMonitor-Windows
+          path: fontes/frontend/pegasus_pdv/instalador/acbr
+
+      - name: Baixar o runtime do Visual C++
+        run: Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe
+
+      - name: Gerar o instalador
+        run: |
+          if (-not (Get-Command iscc -ErrorAction SilentlyContinue)) { choco install innosetup -y --no-progress }
+          $iscc = (Get-Command iscc -ErrorAction SilentlyContinue).Source
+          if (-not $iscc) { $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe' }
+          & $iscc nortix.iss
+          if ($LASTEXITCODE -ne 0) { throw 'falha ao gerar o instalador' }
+          Get-ChildItem saida
+
+      # instala num Windows limpo e confere que o Nortix sobe sem erro antes de publicar
+      - name: Testar a abertura do Nortix
+        run: |
+          $instalador = (Get-ChildItem saida/*.exe | Select-Object -First 1).FullName
+          Start-Process $instalador -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/TASKS=atalho' -Wait
+          $p = Start-Process 'C:\Program Files\Nortix\Nortix.exe' -RedirectStandardError $env:RUNNER_TEMP\nortix-err.txt -RedirectStandardOutput $env:RUNNER_TEMP\nortix-out.txt -PassThru
+          Start-Sleep -Seconds 25
+          $erros = Get-Content $env:RUNNER_TEMP\nortix-err.txt -Raw -ErrorAction SilentlyContinue
+          $erros
+          if ($p.HasExited) { throw "o Nortix fechou sozinho (código $($p.ExitCode))" }
+          Stop-Process -Id $p.Id -Force
+          if ($erros -match 'Unhandled Exception') { throw 'o Nortix deu erro ao abrir' }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Nortix-Instalador
+          path: fontes/frontend/pegasus_pdv/instalador/saida/*.exe
+
+      # link direto e fixo para baixar sem login no GitHub:
+      # https://github.com/<dono>/<repo>/releases/download/nortix-teste/Nortix-Instalador.exe
+      - name: Publicar o instalador para download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Copy-Item (Get-ChildItem saida/*.exe | Select-Object -First 1).FullName Nortix-Instalador.exe
+          gh release delete nortix-teste --yes --cleanup-tag 2>$null
+          gh release create nortix-teste Nortix-Instalador.exe --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --prerelease --title 'Nortix - versão de teste' --notes "Instalador gerado do commit $env:GITHUB_SHA."
+          if ($LASTEXITCODE -ne 0) { throw 'falha ao publicar o instalador' }

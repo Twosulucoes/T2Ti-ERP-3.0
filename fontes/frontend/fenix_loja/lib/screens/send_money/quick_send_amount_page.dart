@@ -28,7 +28,7 @@ class QuickSendAmountPage extends StatelessWidget {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Pay Now",
+          child: Text("Pagar agora",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class QuickSendAmountPage extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Send Amount',
+            'Enviar valor',
             style: TextStyle(color: darkGrey),
           ),
           elevation: 0,
@@ -117,7 +117,7 @@ class QuickSendAmountPage extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  Text('Enter Amount You want to Request',
+                                  Text('Informe o valor que deseja enviar',
                                       style: TextStyle(color: Colors.white)),
                                   SizedBox(
                                       width: 250,
@@ -131,7 +131,7 @@ class QuickSendAmountPage extends StatelessWidget {
                                               fontSize: 48),
                                           textAlign: TextAlign.center,
                                           decoration: InputDecoration(
-                                            hintText: '\$ 00.00',
+                                            hintText: 'R\$ 0,00',
                                             hintStyle: TextStyle(
                                                 color: Colors.white30,
                                                 fontSize: 48),
@@ -143,14 +143,14 @@ class QuickSendAmountPage extends StatelessWidget {
                                           ),
                                         ),
                                       )),
-                                  Text('You can only send \$54.24',
+                                  Text('Você só pode enviar R\$ 54,24',
                                       style: TextStyle(color: Colors.white54)),
                                 ],
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(24.0),
-                              child: Text('Quick Pay'),
+                              child: Text('Pagamento rápido'),
                             ),
                             Flexible(
                                 child: ListView(

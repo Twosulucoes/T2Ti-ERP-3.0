@@ -31,7 +31,7 @@ class MoreProducts extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 24.0, bottom: 8.0),
           child: Text(
-            'More products',
+            'Mais produtos',
             style: TextStyle(color: Colors.white, shadows: shadow),
           ),
         ),

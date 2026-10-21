@@ -61,11 +61,10 @@ class MyAboutTile extends StatelessWidget {
         ),
         Text(
           // ignore: prefer_interpolation_to_compose_strings
-          "Você está usando o T2Ti Pegasus PDV. \n\n"
-          "Esse software é multi-plataforma e pode ser  \n"
-          "encontrado nas diversas stores (Google, Apple e Microsoft) \n"
-          "e também no site da T2Ti Sistemas no seguinte link: \n\n"
-		      "https://t2tisistemas.com/ \n\n"
+          "Você está usando o ${Constantes.nomeApp}, \n"
+          "desenvolvido pela Two Soluções. \n\n"
+          "Baseado no T2Ti ERP 3.0, de T2Ti.COM, \n"
+          "distribuído sob a licença MIT. \n\n"
           "Caminho para o banco de dados: \n" + 
           Sessao.caminhoBancoDados,
         ),

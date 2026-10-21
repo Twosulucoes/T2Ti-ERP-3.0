@@ -65,7 +65,7 @@ class _PaymentPageState extends State<PaymentPage> {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Add This Card",
+          child: Text("Adicionar este cartão",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -98,7 +98,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Payment',
+                          'Pagamento',
                           style: TextStyle(
                             color: darkGrey,
                             fontSize: 22,
@@ -119,7 +119,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'CREDIT CARD',
+                            'CARTÃO DE CRÉDITO',
                             style: TextStyle(color: Colors.white),
                           ),
                           SizedBox(height: 16.0),
@@ -221,7 +221,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               },
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Card Number'),
+                                  hintText: 'Número do cartão'),
                             ),
                           ),
                           Row(
@@ -241,7 +241,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     controller: month,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: 'Month'),
+                                        hintText: 'Mês'),
                                     onChanged: (val) {
                                       setState(() {});
                                     },
@@ -266,7 +266,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     controller: year,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: 'Year'),
+                                        hintText: 'Ano'),
                                     onChanged: (val) {
                                       setState(() {});
                                     },
@@ -308,7 +308,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               controller: cardHolder,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Name on card'),
+                                  hintText: 'Nome no cartão'),
                               onChanged: (val) {
                                 setState(() {});
                               },

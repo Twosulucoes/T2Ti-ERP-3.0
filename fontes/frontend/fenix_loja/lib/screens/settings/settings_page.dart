@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Settings',
+            'Configurações',
             style: TextStyle(color: darkGrey),
           ),
           elevation: 0,
@@ -41,7 +41,7 @@ class SettingsPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      'General',
+                      'Geral',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -49,38 +49,38 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    title: Text('Language A / का'),
+                    title: Text('Idioma A / का'),
                     leading: Image.asset('assets/icons/language.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => ChangeLanguagePage())),
                   ),
                    ListTile(
-                    title: Text('Change Country'),
+                    title: Text('Alterar país'),
                      leading: Image.asset('assets/icons/country.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => ChangeCountryPage())),
                   ),
                    ListTile(
-                    title: Text('Notifications'),
+                    title: Text('Notificações'),
                      leading: Image.asset('assets/icons/notifications.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => NotificationSettingsPage())),
                   ),
                    ListTile(
-                    title: Text('Legal & About'),
+                    title: Text('Jurídico e sobre'),
                      leading: Image.asset('assets/icons/legal.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => LegalAboutPage())),
                   ),
                    ListTile(
-                    title: Text('About Us'),
+                    title: Text('Sobre nós'),
                      leading: Image.asset('assets/icons/about_us.png'),
                     onTap: (){},
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                     child: Text(
-                      'Account',
+                      'Conta',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -88,13 +88,13 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ),
                   ListTile(
-                    title: Text('Change Password'),
+                    title: Text('Alterar senha'),
                     leading: Image.asset('assets/icons/change_pass.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => ChangePasswordPage())),
                   ),
                   ListTile(
-                    title: Text('Sign out'),
+                    title: Text('Sair'),
                       leading: Image.asset('assets/icons/sign_out.png'),
                     onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => WelcomeBackPage())),

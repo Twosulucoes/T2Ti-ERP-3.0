@@ -18,7 +18,7 @@ class ProfileOnePage extends StatelessWidget {
               children: <Widget>[
                 ProfileTile(
                   title: "Albert Eije",
-                  subtitle: "Developer",
+                  subtitle: "Desenvolvedor",
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -69,7 +69,7 @@ class ProfileOnePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: Text(
-              "Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #Entrepreneur #YouTuber",
+              "Google Developer Expert em Flutter. Desenvolvedor #Flutter e #Android apaixonado. #Empreendedor #YouTuber",
               style: TextStyle(fontWeight: FontWeight.w700),
               textAlign: TextAlign.center,
               maxLines: 3,
@@ -98,7 +98,7 @@ class ProfileOnePage extends StatelessWidget {
                       height: 10.0,
                     ),
                     ProfileTile(
-                      title: "Phone",
+                      title: "Telefone",
                       subtitle: "+919876543210",
                     ),
                     SizedBox(
@@ -117,14 +117,14 @@ class ProfileOnePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     ProfileTile(
-                      title: "Location",
+                      title: "Localização",
                       subtitle: "New Delhi",
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
                     ProfileTile(
-                      title: "Email",
+                      title: "E-mail",
                       subtitle: "mtechviral@gmail.com",
                     ),
                     SizedBox(
@@ -159,7 +159,7 @@ class ProfileOnePage extends StatelessWidget {
   }
 
   Widget _scaffold() => CommonScaffold(
-        appTitle: "View Profile",
+        appTitle: "Ver perfil",
         bodyData: bodyData(),
         showFAB: true,
         showDrawer: true,
@@ -180,19 +180,19 @@ Widget followColumn(Size deviceSize) => Container(
         children: <Widget>[
           ProfileTile(
             title: "1.5K",
-            subtitle: "Posts",
+            subtitle: "Publicações",
           ),
           ProfileTile(
             title: "2.5K",
-            subtitle: "Followers",
+            subtitle: "Seguidores",
           ),
           ProfileTile(
             title: "10K",
-            subtitle: "Comments",
+            subtitle: "Comentários",
           ),
           ProfileTile(
             title: "1.2K",
-            subtitle: "Following",
+            subtitle: "Seguindo",
           )
         ],
       ),

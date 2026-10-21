@@ -1,0 +1,7 @@
+# Só o necessário para as imagens do diretório deploy/
+*
+!deploy/cadastros/
+!fontes/backend/php/vycanis/vendor.zip
+!fontes/backend/php/vycanis/cadastros.zip
+!fontes/frontend/react/cadastros-React Admin.zip
+!deploy/mysql/

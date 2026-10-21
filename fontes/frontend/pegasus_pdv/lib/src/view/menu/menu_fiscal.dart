@@ -53,7 +53,7 @@ class MenuFiscal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("T2Ti Pegasus PDV - Fiscal"),
+        title: const Text("${Constantes.nomeApp} - Fiscal"),
         backgroundColor: Colors.black87,
       ),
       // drawer: CommonDrawer(),
@@ -90,7 +90,7 @@ class MenuFiscal extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ProfileTile(
-                    title: "T2Ti Pegasus PDV",
+                    title: Constantes.nomeApp,
                     subtitle: "Módulo Fiscal",
                     textColor: Colors.white,
                   ),

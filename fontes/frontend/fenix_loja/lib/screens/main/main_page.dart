@@ -20,8 +20,8 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-List<String> timelines = ['Weekly featured', 'Best of June', 'Best of 2018'];
-String selectedTimeline = 'Weekly featured';
+List<String> timelines = ['Destaques da semana', 'Melhores de junho', 'Melhores de 2018'];
+String selectedTimeline = 'Destaques da semana';
 
 List<Product> products = [
   Product(
@@ -176,10 +176,10 @@ class _MainPageState extends State<MainPage>
 
     Widget tabBar = TabBar(
       tabs: [
-        Tab(text: 'Trending'),
-        Tab(text: 'Sports'),
+        Tab(text: 'Em alta'),
+        Tab(text: 'Esportes'),
         Tab(text: 'Headsets'),
-        Tab(text: 'Wireless'),
+        Tab(text: 'Sem fio'),
         Tab(text: 'Bluetooth'),
       ],
       labelStyle: TextStyle(fontSize: 16.0),

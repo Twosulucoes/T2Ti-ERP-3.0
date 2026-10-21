@@ -94,7 +94,7 @@ class TimelineOnePage extends StatelessWidget {
           alignment: MainAxisAlignment.center,
           children: <Widget>[
             LabelIcon(
-              label: "${post.likesCount} Likes",
+              label: "${post.likesCount} Curtidas",
               icon: FontAwesomeIcons.solidThumbsUp,
               iconColor: Colors.green,
             ),

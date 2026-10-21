@@ -29,7 +29,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Confirm Change",
+          child: Text("Confirmar alteração",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -48,7 +48,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -70,7 +70,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 48.0,top:16.0),
                             child: Text(
-                              'Change Password',
+                              'Alterar senha',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 12.0),
                             child: Text(
-                              'Enter your current password',
+                              'Informe sua senha atual',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -94,14 +94,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Existing Password',
+                                    hintText: 'Senha atual',
                                     hintStyle: TextStyle(fontSize: 12.0)),
                               )),
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 24, bottom: 12.0),
                             child: Text(
-                              'Enter new password',
+                              'Informe a nova senha',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -115,14 +115,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'New Password',
+                                    hintText: 'Nova senha',
                                     hintStyle: TextStyle(fontSize: 12.0)),
                               )),
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 24, bottom: 12.0),
                             child: Text(
-                              'Retype new password',
+                              'Digite novamente a nova senha',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -136,7 +136,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Retype Password',
+                                    hintText: 'Repita a senha',
                                     hintStyle: TextStyle(fontSize: 12.0)),
                               )),
                         ],

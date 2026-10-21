@@ -79,16 +79,16 @@ class UIData {
   static const String enter_code_label = "Telefone";
   static const String enter_code_hint = "Telefone: 10 dígitos";
   static const String enter_otp_label = "OTP";
-  static const String enter_otp_hint = "4 Digit OTP";
-  static const String get_otp = "Get OTP";
-  static const String resend_otp = "Resend OTP";
-  static const String login = "Login";
+  static const String enter_otp_hint = "OTP: 4 dígitos";
+  static const String get_otp = "Receber OTP";
+  static const String resend_otp = "Reenviar OTP";
+  static const String login = "Entrar";
   static const String enter_valid_number = "Informe 10 dígitos para o telefone";
   static const String enter_valid_otp = "Informe 4 dígitos para o OTP";
 
   //gneric
   static const String error = "Erro";
-  static const String success = "Successo";
+  static const String success = "Sucesso";
   static const String ok = "OK";
   static const String forgot_password = "Esqueceu a Senha?";
   static const String something_went_wrong = "Alguma coisa saiu errada";

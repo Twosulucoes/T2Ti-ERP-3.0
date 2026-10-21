@@ -880,11 +880,8 @@ class EmpresaPersistePageState extends State<EmpresaPersistePage> {
         empresa = await (servico.atualizar(empresa));
         if (!mounted) return;
         Sessao.fecharDialogBoxEspera(context);
-        if (empresa != null) {
-          await _salvarDadosLocais();
-        } else {
-          showInSnackBar('Ocorreu um problema ao tentar salvar os dados da empresa no Servidor.', context, corFundo: Colors.red);
-        }
+        // o servidor é opcional: sem ele os dados ficam salvos só neste computador
+        await _salvarDadosLocais(enviadoAoServidor: empresa != null);
         // } else {
         //   await _salvarDadosLocais();
         // }
@@ -892,11 +889,15 @@ class EmpresaPersistePageState extends State<EmpresaPersistePage> {
     }
   }
 
-  Future _salvarDadosLocais() async {
+  Future _salvarDadosLocais({bool enviadoAoServidor = true}) async {
     await Sessao.db.empresaDao.alterar(Sessao.empresa!, Sessao.configuracaoPdv!.modulo != 'G');
     Sessao.empresa = await Sessao.db.empresaDao.consultarObjeto(1);
     if (!mounted) return;
-    showInSnackBar('Dados salvos com sucesso.', context, corFundo: Colors.blue);
+    if (enviadoAoServidor) {
+      showInSnackBar('Dados salvos com sucesso.', context, corFundo: Colors.blue);
+    } else {
+      showInSnackBar('Dados salvos neste computador. Não foi possível enviá-los ao servidor.', context, corFundo: Colors.orange);
+    }
     Navigator.of(context).pop();
   }
 }

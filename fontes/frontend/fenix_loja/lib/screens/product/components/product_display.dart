@@ -34,14 +34,14 @@ class ProductDisplay extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(children: [
                     TextSpan(
-                        text: '\$ ${product.price}',
+                        text: 'R\$ ${product.price}',
                         style: const TextStyle(
                             color: const Color(0xFFFFFFFF),
                             fontWeight: FontWeight.w400,
                             fontFamily: "Montserrat",
                             fontSize: 36.0)),
                         TextSpan(
-                            text: '.58',
+                            text: ',58',
                             style: const TextStyle(
                                 color: const Color(0xFFFFFFFF),
                                 fontWeight: FontWeight.w400,

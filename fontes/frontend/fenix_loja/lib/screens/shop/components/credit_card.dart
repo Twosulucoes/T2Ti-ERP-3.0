@@ -16,7 +16,7 @@ class CreditCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Text(
-            'CREDIT CARD',
+            'CARTÃO DE CRÉDITO',
             style: TextStyle(color: Colors.white),
           ),
           Container(
@@ -32,7 +32,7 @@ class CreditCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Name',
+                'Nome',
                 style: TextStyle(color: Colors.grey),
               ),
               Text(

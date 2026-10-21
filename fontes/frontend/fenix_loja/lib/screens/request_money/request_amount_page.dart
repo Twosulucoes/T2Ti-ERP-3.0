@@ -28,7 +28,7 @@ class RequestAmountPage extends StatelessWidget {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Request Now",
+          child: Text("Solicitar agora",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -75,7 +75,7 @@ class RequestAmountPage extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Request Amount',
+            'Solicitar valor',
             style: TextStyle(color: darkGrey),
           ),
           elevation: 0,
@@ -130,7 +130,7 @@ class RequestAmountPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text('Enter Amount You want to Request',
+                          Text('Informe o valor que deseja solicitar',
                               style: TextStyle(color: Colors.white)),
                           SizedBox(
                               width: 250,
@@ -143,7 +143,7 @@ class RequestAmountPage extends StatelessWidget {
                                       color: Colors.white, fontSize: 48),
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
-                                    hintText: '\$ 00.00',
+                                    hintText: 'R\$ 0,00',
                                     hintStyle: TextStyle(
                                         color: Colors.white30, fontSize: 48),
                                     enabledBorder: const UnderlineInputBorder(
@@ -153,128 +153,128 @@ class RequestAmountPage extends StatelessWidget {
                                   ),
                                 ),
                               )),
-                          Text('You can only send \$54.24',
+                          Text('Você só pode solicitar R\$ 54,24',
                               style: TextStyle(color: Colors.white54)),
                         ],
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(24.0),
-                      child: Text('Payment History'),
+                      child: Text('Histórico de pagamentos'),
                     ),
                     Flexible(
                         child: ListView(
                       children: <Widget>[
                         ListTile(
-                          title: Text('24th December 2018',
+                          title: Text('24 de dezembro de 2018',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontWeight: FontWeight.bold)),
-                          subtitle: Text('Received'),
+                          subtitle: Text('Recebido'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '\$ ',
+                                'R\$ ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0),
                               ),
                               Text(
-                                '90.00',
+                                '90,00',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         ListTile(
-                          title: Text('24th December 2018',
+                          title: Text('24 de dezembro de 2018',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontWeight: FontWeight.bold)),
-                          subtitle: Text('Received'),
+                          subtitle: Text('Recebido'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '\$ ',
+                                'R\$ ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0),
                               ),
                               Text(
-                                '90.00',
+                                '90,00',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         ListTile(
-                          title: Text('24th December 2018',
+                          title: Text('24 de dezembro de 2018',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontWeight: FontWeight.bold)),
-                          subtitle: Text('Received'),
+                          subtitle: Text('Recebido'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '\$ ',
+                                'R\$ ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0),
                               ),
                               Text(
-                                '90.00',
+                                '90,00',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         ListTile(
-                          title: Text('24th December 2018',
+                          title: Text('24 de dezembro de 2018',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontWeight: FontWeight.bold)),
-                          subtitle: Text('Received'),
+                          subtitle: Text('Recebido'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '\$ ',
+                                'R\$ ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0),
                               ),
                               Text(
-                                '90.00',
+                                '90,00',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
                         ListTile(
-                          title: Text('24th December 2018',
+                          title: Text('24 de dezembro de 2018',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontWeight: FontWeight.bold)),
-                          subtitle: Text('Received'),
+                          subtitle: Text('Recebido'),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                '\$ ',
+                                'R\$ ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 10.0),
                               ),
                               Text(
-                                '90.00',
+                                '90,00',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],

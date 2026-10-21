@@ -109,7 +109,7 @@ class SettingsOnePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "Sound",
+                  "Som",
                   style: TextStyle(color: Colors.grey.shade700),
                 ),
               ),
@@ -123,7 +123,7 @@ class SettingsOnePage extends StatelessWidget {
                         Icons.do_not_disturb_off,
                         color: Colors.orange,
                       ),
-                      title: Text("Silent Mode"),
+                      title: Text("Modo silencioso"),
                       trailing: CommonSwitch(
                         defValue: false,
                       ),
@@ -133,7 +133,7 @@ class SettingsOnePage extends StatelessWidget {
                         Icons.vibration,
                         color: Colors.purple,
                       ),
-                      title: Text("Vibrate Mode"),
+                      title: Text("Modo vibrar"),
                       trailing: CommonSwitch(
                         defValue: true,
                       ),
@@ -143,7 +143,7 @@ class SettingsOnePage extends StatelessWidget {
                         Icons.volume_up,
                         color: Colors.green,
                       ),
-                      title: Text("Sound Volume"),
+                      title: Text("Volume do som"),
                       trailing: Icon(Icons.arrow_right),
                     ),
                     ListTile(
@@ -151,7 +151,7 @@ class SettingsOnePage extends StatelessWidget {
                         Icons.phonelink_ring,
                         color: Colors.grey,
                       ),
-                      title: Text("Ringtone"),
+                      title: Text("Toque"),
                       trailing: Icon(Icons.arrow_right),
                     )
                   ],

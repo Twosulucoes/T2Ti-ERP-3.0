@@ -36,6 +36,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 Based on: Flutter UIKit by Pawan Kumar - https://github.com/iampawan/Flutter-UI-Kit
 *******************************************************************************/
 import 'package:flutter/material.dart';
+import 'package:pegasus_pdv/src/infra/infra.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:pegasus_pdv/src/view/shared/custom_background.dart';
@@ -51,7 +52,7 @@ class MenuFinanceiro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("T2Ti Pegasus PDV - Financeiro"),
+        title: const Text("${Constantes.nomeApp} - Financeiro"),
         backgroundColor: Colors.black87,
       ),
       // drawer: CommonDrawer(),
@@ -87,7 +88,7 @@ class MenuFinanceiro extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ProfileTile(
-                    title: "T2Ti Pegasus PDV",
+                    title: Constantes.nomeApp,
                     subtitle: "Módulo Financeiro",
                     textColor: Colors.white,
                   ),

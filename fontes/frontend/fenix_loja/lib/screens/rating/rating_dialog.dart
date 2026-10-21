@@ -28,7 +28,7 @@ class RatingDialog extends StatelessWidget {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Pay Now",
+          child: Text("Enviar",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -47,7 +47,7 @@ class RatingDialog extends StatelessWidget {
           padding: EdgeInsets.all(24.0),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             Text(
-              'Thank You!',
+              'Obrigado!',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Padding(
@@ -58,7 +58,7 @@ class RatingDialog extends StatelessWidget {
                         TextStyle(fontFamily: 'Montserrat', color: Colors.grey),
                     children: [
                       TextSpan(
-                        text: 'You rated ',
+                        text: 'Você avaliou ',
                       ),
                       TextSpan(
                           text: 'Boat Rockerz 350 On-Ear Bluetooth Headphones',
@@ -99,7 +99,7 @@ class RatingDialog extends StatelessWidget {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.zero,
-                      hintText: 'Say something about the product.'),
+                      hintText: 'Diga algo sobre o produto.'),
                   style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                   maxLength: 200,
                 )),

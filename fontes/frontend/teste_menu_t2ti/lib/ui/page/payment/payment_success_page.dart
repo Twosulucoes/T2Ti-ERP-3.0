@@ -93,7 +93,7 @@ class PaymentSuccessPageState extends State<PaymentSuccessPage> {
                 ListTile(
                   title: Text("Data"),
                   subtitle: Text("05 Ago 2019"),
-                  trailing: Text("10:00 AM"),
+                  trailing: Text("10:00"),
                 ),
                 ListTile(
                   title: Text("T2Ti.COM"),
@@ -106,7 +106,7 @@ class PaymentSuccessPageState extends State<PaymentSuccessPage> {
                 ),
                 ListTile(
                   title: Text("Valor"),
-                  subtitle: Text("R\$125.00"),
+                  subtitle: Text("R\$ 125,00"),
                   trailing: Text("Finalizado"),
                 ),
                 Card(

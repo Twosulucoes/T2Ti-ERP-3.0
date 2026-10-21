@@ -35,11 +35,11 @@ class _SearchPageState extends State<SearchPage>
   ];
 
   List<String> timeFilter = [
-    'Brand',
-    'New',
-    'Latest',
-    'Trending',
-    'Discount',
+    'Marca',
+    'Novo',
+    'Mais recentes',
+    'Em alta',
+    'Desconto',
   ];
 
   List<String> categoryFilter = [
@@ -51,10 +51,10 @@ class _SearchPageState extends State<SearchPage>
   ];
 
   List<String> priceFilter = [
-    '\$50-200',
-    '\$200-400',
-    '\$400-800',
-    '\$800-1000',
+    'R\$ 50-200',
+    'R\$ 200-400',
+    'R\$ 400-800',
+    'R\$ 800-1000',
   ];
 
   List<Product> searchResults = [];
@@ -94,7 +94,7 @@ class _SearchPageState extends State<SearchPage>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'Search',
+                  'Pesquisar',
                   style: TextStyle(
                     color: darkGrey,
                     fontSize: 22,
@@ -143,7 +143,7 @@ class _SearchPageState extends State<SearchPage>
                         searchResults.clear();
                       },
                       child: Text(
-                        'Clear',
+                        'Limpar',
                         style: TextStyle(color: Colors.red),
                       ))),
             ),
@@ -187,7 +187,7 @@ class _SearchPageState extends State<SearchPage>
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Filters',
+                'Filtros',
                 style: TextStyle(color: Colors.grey[300]),
               ),
             ),
@@ -198,7 +198,7 @@ class _SearchPageState extends State<SearchPage>
               padding:
                   const EdgeInsets.only(left: 32.0, top: 16.0, bottom: 16.0),
               child: Text(
-                'Sort By',
+                'Ordenar por',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
@@ -322,7 +322,7 @@ class _SearchPageState extends State<SearchPage>
 //                      padding: EdgeInsets.all(16.0),
 //                      child: Row(
 //                          mainAxisAlignment: MainAxisAlignment.center,
-//                          children: <Widget>[Text('Filters')]),
+//                          children: <Widget>[Text('Filtros')]),
 //                      color: Colors.white,
 //                      width: MediaQuery.of(context).size.height,
 //                    )),

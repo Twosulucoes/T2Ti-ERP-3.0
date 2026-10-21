@@ -43,7 +43,7 @@ class _ProductPageState extends State<ProductPage> {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("View Product",
+          child: Text("Ver produto",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -65,7 +65,7 @@ class _ProductPageState extends State<ProductPage> {
               MaterialPageRoute(builder: (_) => SearchPage())),)
         ],
         title: Text(
-          'Headphones',
+          'Fones de ouvido',
           style: const TextStyle(
               color: darkGrey,
               fontWeight: FontWeight.w500,
@@ -114,7 +114,7 @@ class _ProductPageState extends State<ProductPage> {
                               Border.all(color: Color(0xFFFFFFFF), width: 0.5),
                         ),
                         child: Center(
-                          child: new Text("Details",
+                          child: new Text("Detalhes",
                               style: const TextStyle(
                                   color: const Color(0xeefefefe),
                                   fontWeight: FontWeight.w300,

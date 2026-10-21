@@ -8,16 +8,16 @@ class ChangeLanguagePage extends StatefulWidget {
 
 class _ChangeCountryPageState extends State<ChangeLanguagePage> {
   List<String> languages = [
-    'Chinesse',
-    'Spanish',
-    'English',
-    'Romanian',
-    'German',
-    'Portuguese',
+    'Chinês',
+    'Espanhol',
+    'Inglês',
+    'Romeno',
+    'Alemão',
+    'Português',
     'Bengali',
-    'Russian',
-    'Japanese',
-    'French',
+    'Russo',
+    'Japonês',
+    'Francês',
   ];
 
   String currentLanguage = '';
@@ -33,7 +33,7 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
         ),
         backgroundColor: Colors.transparent,
         title: Text(
-          'Settings',
+          'Configurações',
           style: TextStyle(color: darkGrey),
         ),
         elevation: 0,
@@ -48,7 +48,7 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: Text(
-                  'Language A / का',
+                  'Idioma A / का',
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

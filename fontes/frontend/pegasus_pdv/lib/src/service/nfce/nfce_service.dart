@@ -40,6 +40,7 @@ import 'package:http/http.dart' show Client;
 import 'package:pegasus_pdv/src/infra/infra.dart';
 
 import 'package:pegasus_pdv/src/service/service_base.dart';
+import 'package:pegasus_pdv/src/service/nfce/acbr_monitor_local.dart';
 import 'package:pegasus_pdv/src/model/model.dart';
 
 /// classe responsável por requisições ao servidor REST
@@ -47,6 +48,7 @@ class NfceService extends ServiceBase {
   var clienteHTTP = Client();
 
   Future<List<PdvTipoPlanoModel>?> consultarListaTipoPlanoNfce({Filtro? filtro}) async {
+    if (Constantes.nfceLocal) return [];
     List<PdvTipoPlanoModel> listaNfceTipoPlanoModel = [];
     
     try {
@@ -103,7 +105,20 @@ class NfceService extends ServiceBase {
     */
   }
 
+  /// no modo local a NFC-e não depende de plano contratado: devolve um plano sempre pago
+  NfcePlanoPagamentoModel _planoLocal() {
+    final plano = NfcePlanoPagamentoModel();
+    plano.plano = 'Local';
+    plano.valor = 0;
+    plano.statusPagamento = '3';
+    plano.dataSolicitacao = DateTime.now();
+    plano.dataPagamento = DateTime.now();
+    plano.dataPlanoExpira = DateTime(2099, 12, 31);
+    return plano;
+  }
+
   Future<NfcePlanoPagamentoModel?> verificarPlano() async {  
+    if (Constantes.nfceLocal) return _planoLocal();
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -179,6 +194,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<NfeConfiguracaoModel?> atualizarConfiguracoesMonitor(NfeConfiguracaoModel nfeConfiguracao, String? cnpj) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.atualizarConfiguracoesMonitor(nfeConfiguracao);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -228,6 +244,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<Uint8List?> baixarArquivosXml(String periodo) async { 
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.baixarArquivosXml(periodo);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -266,6 +283,7 @@ class NfceService extends ServiceBase {
   }  
 
   Future<bool> atualizarCertificadoDigital(String arquivoBase64, String senha) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.atualizarCertificadoDigital(arquivoBase64, senha);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -307,6 +325,7 @@ class NfceService extends ServiceBase {
   /// Métodos relacionados ao ACBrMonitor
   /////////////////////////////////////////
   Future<dynamic> emitirNfce(String nfceBase64, String numero) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.emitirNfce(nfceBase64, numero);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -349,6 +368,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<dynamic> emitirNfceContingencia(String nfceBase64, String numero) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.emitirNfceContingencia(nfceBase64, numero);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -391,6 +411,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<dynamic> transmitirNfceContingenciada(String chave) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.transmitirNfceContingenciada(chave);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {
@@ -432,6 +453,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<String> inutilizarNumeroNfce(ObjetoNfe objetoNfe) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.inutilizarNumeroNfce(objetoNfe);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {"content-type": "application/json", "authentication": "Bearer ${Sessao.tokenJWT}"} 
@@ -460,6 +482,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<String> cancelarNota(ObjetoNfe objetoNfe) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.cancelarNota(objetoNfe);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {"content-type": "application/json", "authentication": "Bearer ${Sessao.tokenJWT}"} 
@@ -488,6 +511,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<String> tratarNotaAnteriorContingencia(ObjetoNfe objetoNfe) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.tratarNotaAnteriorContingencia(objetoNfe);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {"content-type": "application/json", "authentication": "Bearer ${Sessao.tokenJWT}"} 
@@ -516,6 +540,7 @@ class NfceService extends ServiceBase {
   }
 
   Future<dynamic> gerarPdfDanfe(String chave) async {
+    if (Constantes.nfceLocal) return AcbrMonitorLocal.gerarPdfDanfe(chave);
     try {
       ServiceBase.cabecalhoRequisicao = Constantes.linguagemServidor == 'delphi' 
                             ? {

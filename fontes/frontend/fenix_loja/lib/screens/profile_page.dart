@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                                       builder: (_) => WalletPage())),
                             ),
                             Text(
-                              'Wallet',
+                              'Carteira',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
@@ -75,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                                 MaterialPageRoute(builder: (_) => TrackingPage())),
                             ),
                             Text(
-                              'Shipped',
+                              'Enviados',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
@@ -90,7 +90,7 @@ class ProfilePage extends StatelessWidget {
                                       builder: (_) => PaymentPage())),
                             ),
                             Text(
-                              'Payment',
+                              'Pagamento',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                               icon: Image.asset('assets/icons/contact_us.png'), onPressed: () {},
                             ),
                             Text(
-                              'Support',
+                              'Suporte',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
                           ],
@@ -112,8 +112,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  title: Text('Settings'),
-                  subtitle: Text('Privacy and logout'),
+                  title: Text('Configurações'),
+                  subtitle: Text('Privacidade e sair'),
                   leading: Image.asset('assets/icons/settings_icon.png', fit: BoxFit.scaleDown, width: 30, height: 30,),
                   trailing: Icon(Icons.chevron_right, color: yellow),
                   onTap: () => Navigator.of(context).push(
@@ -121,8 +121,8 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Divider(),
                 ListTile(
-                  title: Text('Help & Support'),
-                  subtitle: Text('Help center and legal support'),
+                  title: Text('Ajuda e suporte'),
+                  subtitle: Text('Central de ajuda e suporte jurídico'),
                   leading: Image.asset('assets/icons/support.png'),
                   trailing: Icon(
                     Icons.chevron_right,
@@ -132,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                 Divider(),
                 ListTile(
                   title: Text('FAQ'),
-                  subtitle: Text('Questions and Answer'),
+                  subtitle: Text('Perguntas e respostas'),
                   leading: Image.asset('assets/icons/faq.png'),
                   trailing: Icon(Icons.chevron_right, color: yellow),
                   onTap: () => Navigator.of(context).push(

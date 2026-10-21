@@ -64,7 +64,7 @@ class ProductDesc extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       new Text(
-                        "Your Size",
+                        "Seu tamanho",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                       new RawChip(
@@ -78,11 +78,11 @@ class ProductDesc extends StatelessWidget {
                   new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      new Text("Color",
+                      new Text("Cor",
                           style: TextStyle(fontWeight: FontWeight.w700)),
                       new RawChip(
                         label: new Text(
-                          "Red Blue",
+                          "Vermelho Azul",
                           style: TextStyle(color: Colors.white),
                         ),
                         backgroundColor: Colors.red,
@@ -92,7 +92,7 @@ class ProductDesc extends StatelessWidget {
                   new Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      new Text("Product ID",
+                      new Text("Código do produto",
                           style: TextStyle(fontWeight: FontWeight.w700)),
                       new RawChip(
                         label: new Text(

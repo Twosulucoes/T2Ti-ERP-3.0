@@ -24,7 +24,7 @@ class AddAddressPage extends StatelessWidget {
             ],
             borderRadius: BorderRadius.circular(9.0)),
         child: Center(
-          child: Text("Finish",
+          child: Text("Concluir",
               style: const TextStyle(
                   color: const Color(0xfffefefe),
                   fontWeight: FontWeight.w600,
@@ -41,7 +41,7 @@ class AddAddressPage extends StatelessWidget {
         elevation: 0.0,
         iconTheme: IconThemeData(color: darkGrey),
         title: Text(
-          'Add Address',
+          'Adicionar endereço',
           style: const TextStyle(
               color: darkGrey,
               fontWeight: FontWeight.w500,
@@ -86,7 +86,7 @@ class AddAddressPage extends StatelessWidget {
                                           'assets/icons/address_home.png'),
                                     ),
                                     Text(
-                                      'Add New Address',
+                                      'Adicionar novo endereço',
                                       style: TextStyle(
                                         fontSize: 8,
                                         color: darkGrey,
@@ -117,7 +117,7 @@ class AddAddressPage extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      'Simon Philip,\nCity Oscarlad',
+                                      'Simon Philip,\nCidade Oscarlad',
                                       style: TextStyle(
                                         fontSize: 8,
                                         color: Colors.white,
@@ -147,7 +147,7 @@ class AddAddressPage extends StatelessWidget {
                                           height: 20),
                                     ),
                                     Text(
-                                      'Workplace',
+                                      'Trabalho',
                                       style: TextStyle(
                                         fontSize: 8,
                                         color: Colors.white,

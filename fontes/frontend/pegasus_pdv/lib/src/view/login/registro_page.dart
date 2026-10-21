@@ -516,8 +516,18 @@ class RegistroPageState extends State<RegistroPage> {
             showInSnackBar('Registro realizado com sucesso.', context, corFundo: Colors.blue);
           }
         } else {
-          showInSnackBar('Ocorreu um problema ao tentar salvar os dados no Servidor.', context, corFundo: Colors.red);
-        }        
+          // sem servidor de retaguarda o registro fica só neste computador
+          Sessao.empresa = Sessao.empresa!.copyWith(
+            registrado: const Value(true),
+            dataRegistro: Value(DateTime.now()),
+            horaRegistro: Value(Biblioteca.formatarHora(DateTime.now())),
+          );
+          await Sessao.db.empresaDao.alterar(Sessao.empresa!, Sessao.configuracaoPdv!.modulo != 'G');
+          Sessao.empresa = await Sessao.db.empresaDao.consultarObjeto(1);
+          if (!mounted) return;
+          Navigator.of(context).pop();
+          showInSnackBar('Registro salvo neste computador. Não foi possível enviá-lo ao servidor.', context, corFundo: Colors.orange);
+        }
       }      
     } else {
       gerarDialogBoxInformacao(context, 'É necessário ler e aceitar os Termos de Uso.');      
@@ -533,7 +543,7 @@ const htmlData = r"""
    <div style="text-align: center;"><b style="background-color: transparent;"><font style="color: #0000ff; font-size: 24px;">TERMOS GERAIS E CONDIÇÕES DE USO</font></b></div>
    <div>&nbsp;</div>
    <div><br></div>
-   <div>Este instrumento contém os termos gerais e condições de uso so SOFTWARE T2Ti Pegasus PDV disponibilizado pela <b>T2Ti.COM</b>, pessoa jurídica de direito privado, com sede na QNE 06, nº 18, Taguatinga, na cidade de Brasília, Distrito Federal, inscrita no CNPJ sob o nº 10.793.118/0001-78, doravante denominada T2Ti.&nbsp;</div>
+   <div>Este instrumento contém os termos gerais e condições de uso do SOFTWARE Nortix disponibilizado pela <b>A L BARBOSA DE ASSIS INOVACAO LTDA</b> (nome fantasia TWO SOLUÇÕES), pessoa jurídica de direito privado, com sede na Av. Carlos Gomes, nº 700, bairro Boa Vista, na cidade de Porto Alegre, Rio Grande do Sul, CEP 90480-000, inscrita no CNPJ sob o nº 66.306.860/0001-66, doravante denominada NORTIX.&nbsp;</div>
    <div><br></div>
    <div><br></div>
    <div>
@@ -562,7 +572,7 @@ const htmlData = r"""
    <div><br></div>
    <div>Considerando que se o USUÁRIO estiver aceitando este Termo em nome de terceiros, este declara e garante que: (i) tem plena autoridade legal para sujeitar seu empregador (ou a entidade em questão) a estes termos e condições; (ii) leu e entendeu este Contrato e (iii) concorda, em nome da parte que você representa, com os termos deste Contrato.</div>
    <div><br></div>
-   <div><b>Considerando que a T2Ti se reserva o direito de alterar este Contrato a qualquer momento e que as alterações entrem em vigor quando divulgadas por meio de seu website ou quando informar o USUÁRIO por outros meios, incluindo atualizações do SOFTWARE. Nestes casos, a continuação do uso pelo USUÁRIO indicará sua concordância com as alterações.</b></div>
+   <div><b>Considerando que a NORTIX se reserva o direito de alterar este Contrato a qualquer momento e que as alterações entrem em vigor quando divulgadas por meio de seu website ou quando informar o USUÁRIO por outros meios, incluindo atualizações do SOFTWARE. Nestes casos, a continuação do uso pelo USUÁRIO indicará sua concordância com as alterações.</b></div>
    <div><br></div>
    <div>Considerando que registrando-se, acessando e utilizando o SOFTWARE de qualquer forma, incluindo navegação, visualização, download, geração, recebimento e transmissão de quaisquer dados, informações ou mensagens, Você manifesta Sua expressa concordância, em Seu nome e em nome da Sua empresa ou em nome do Seu empregador para com estes Termos, conforme periodicamente atualizados, seja Você USUÁRIO registrado dos Serviços ou não, pelo que Você se compromete a respeitar e cumprir todas as disposições aqui contidas, bem como as disposições dos avisos legais que regulam a utilização dos Aplicativos e dos Serviços.</div>
    <div><br></div>
@@ -582,8 +592,8 @@ const htmlData = r"""
    </div>
    <div><br></div>
    <div>1.1.2. <b>SOFTWARE:</b> 
-      É a ferramenta denominada “T2Ti Pegasus PDV”, que possibilita que o USUÁRIO gerencie suas vendas, compras, controle de estoque, financeiro e emissão de Nota Fiscal de Consumitor Eletrônica (NFC-e) por seus próprios critérios e necessidades, seguindo as configurações definidas pelo USUÁRIO. 
-      De acordo com a Lei nº. 9609/98 trata-se da expressão de um conjunto organizado de instruções em linguagem natural ou codificado, contido em suporte físico de qualquer natureza, de emprego necessário em máquinas automáticas de tratamento da informação, dispositivos, instrumentos ou equipamentos periféricos, baseados em técnica digital ou análoga, para fazê-los funcionar de modo e para fins determinados. Neste Contrato, SOFTWARE dirá respeito ao programa de computador de PROPRIEDADE da T2Ti devidamente licenciado.
+      É a ferramenta denominada “Nortix”, que possibilita que o USUÁRIO gerencie suas vendas, compras, controle de estoque, financeiro e emissão de Nota Fiscal de Consumitor Eletrônica (NFC-e) por seus próprios critérios e necessidades, seguindo as configurações definidas pelo USUÁRIO. 
+      De acordo com a Lei nº. 9609/98 trata-se da expressão de um conjunto organizado de instruções em linguagem natural ou codificado, contido em suporte físico de qualquer natureza, de emprego necessário em máquinas automáticas de tratamento da informação, dispositivos, instrumentos ou equipamentos periféricos, baseados em técnica digital ou análoga, para fazê-los funcionar de modo e para fins determinados. Neste Contrato, SOFTWARE dirá respeito ao programa de computador de PROPRIEDADE da NORTIX devidamente licenciado.
    </div>
    <div><br></div>
    <div>1.1.3. <b>INFORMAÇÕES DE CONTA:</b> 
@@ -637,7 +647,7 @@ const htmlData = r"""
       pelo SOFTWARE, sendo que o comprovante emitido é um RECIBO sem valor fiscal. Este módulo deve ser utilizado apenas por MEI devidamente cadastrado
       no SIMEI. É de responsabilidade exclusiva do usuário a emissão do recibo sem valor fiscal. Caso a empresa inscrita no SIMEI venha a não 
       mais ser enquadrada como MEI por conta de seu faturamento, o usuário deverá emitir o respectivo comprovante fiscal de acordo com a legislação.
-      A T2Ti não se responsabiliza pelo fato de o usuário estar emitindo Recibos quando na verdade deveria emitir comprovantes fiscais (NFC-e, SAT ou MFE).
+      A NORTIX não se responsabiliza pelo fato de o usuário estar emitindo Recibos quando na verdade deveria emitir comprovantes fiscais (NFC-e, SAT ou MFE).
       O usuário é ciente de suas responsabilidades perante o fisco e deve responder pelos seus atos.
    </div>
    <div><br></div>
@@ -655,15 +665,15 @@ const htmlData = r"""
       </b>
    </div>
    <div><br></div>
-   <div>2.1. O objeto deste contrato é o estabelecimento das condições de uso do SOFTWARE da T2Ti, de forma não exclusiva e intransferível, que proporciona ao USUÁRIO 
+   <div>2.1. O objeto deste contrato é o estabelecimento das condições de uso do SOFTWARE da NORTIX, de forma não exclusiva e intransferível, que proporciona ao USUÁRIO 
    o gerenciamento local de suas vendas, seja por emissão de recibo (no caso de MEI) ou por emissão de NFC-e, sendo possível ainda realizar o controle
    de compras, controle de estoque e controle financeiro (contas a pagar e contas a receber).</div>
    <div><br></div>
    <div>2.1.1. O objeto contratado não inclui, de forma alguma, acesso à Internet e infraestrutura local no USUÁRIO. Desta forma, será de integral e exclusiva responsabilidade do USUÁRIO obter, de forma independente e às suas custas, o equipamento, SOFTWAREs e os serviços necessários para garantir sua conexão à Internet e ao SOFTWARE que proporciona acesso aos Serviços.</div>
    <div><br></div>
-   <div>2.1.2. A T2Ti poderá incluir links que remetam a páginas de Internet, conteúdos ou recursos de terceiros, os quais não estão sob controle da T2Ti. <b>Em razão disto, o USUÁRIO reconhece e concorda expressamente que esta não terá qualquer responsabilidade sobre referidas páginas, conteúdos ou recursos.</b></div>
+   <div>2.1.2. A NORTIX poderá incluir links que remetam a páginas de Internet, conteúdos ou recursos de terceiros, os quais não estão sob controle da NORTIX. <b>Em razão disto, o USUÁRIO reconhece e concorda expressamente que esta não terá qualquer responsabilidade sobre referidas páginas, conteúdos ou recursos.</b></div>
    <div><br></div>
-   <div>2.2. Qualquer pessoa que pretenda utilizar este SOFTWARE e os demais serviços oferecidos por este ou vinculados a este no site da T2Ti deverá aceitar estes Termos e as demais políticas eventualmente disponibilizadas.</div>
+   <div>2.2. Qualquer pessoa que pretenda utilizar este SOFTWARE e os demais serviços oferecidos por este ou vinculados a este no site da NORTIX deverá aceitar estes Termos e as demais políticas eventualmente disponibilizadas.</div>
    
    <div><br></div>
    <div><br></div>
@@ -684,27 +694,27 @@ const htmlData = r"""
    <div><br></div>
    <div>3.4. Quando solicitado, o USUÁRIO concorda em fornecer informações verdadeiras, corretas, atualizadas e completas (os “Dados de Cadastro”), conforme solicitados no formato de cadastro disponibilizado, sob pena de responsabilização nos termos da legislação aplicável vigente.</div>
    <div><br></div>
-   <div>3.5. A T2Ti dependerá dos seus Dados de Cadastro para avaliar sua situação de negócio, para fornecer informação sobre os serviços, 
-   para configurar o ambiente para emissão da NFC-e, ou, alternativamente, para identificar e/ou entrar em contato com o USUÁRIO. <b>Se os Dados de Cadastro não forem verdadeiros e corretos, ou estiverem desatualizados e incompletos, a T2Ti poderá encerrar o licenciamento e todos os usos correntes ou futuros dos Serviços, respeitando o Contrato de Licenciamento firmado entre as partes.</b></div>
+   <div>3.5. A NORTIX dependerá dos seus Dados de Cadastro para avaliar sua situação de negócio, para fornecer informação sobre os serviços, 
+   para configurar o ambiente para emissão da NFC-e, ou, alternativamente, para identificar e/ou entrar em contato com o USUÁRIO. <b>Se os Dados de Cadastro não forem verdadeiros e corretos, ou estiverem desatualizados e incompletos, a NORTIX poderá encerrar o licenciamento e todos os usos correntes ou futuros dos Serviços, respeitando o Contrato de Licenciamento firmado entre as partes.</b></div>
    <div><br></div>
    <div>3.6. O USUÁRIO poderá receber uma senha e designação de conta no momento em que completar o processo de cadastro, sendo certo que tais dados são pessoais e intransferíveis (os “Dados de Acesso”). O USUÁRIO é o único e exclusivo responsável por manter a confidencialidade de tais dados, bem como por todas as atividades que ocorrerem mediante o emprego de seus Dados de Acesso.</div>
    <div><br></div>
    <div>3.6.1. Neste sentido, o USUÁRIO obriga-se a:</div>
    <div><br></div>
    <div><b>(i)</b> 
-      notificar imediatamente a T2Ti de qualquer uso não autorizado de seus Dados de Acesso ou qualquer outra violação de segurança, incluindo, mas não se limitando, o extravio, perda ou roubo de seus Dados de Acesso; e
+      notificar imediatamente a NORTIX de qualquer uso não autorizado de seus Dados de Acesso ou qualquer outra violação de segurança, incluindo, mas não se limitando, o extravio, perda ou roubo de seus Dados de Acesso; e
    </div>
    <div><b>(ii)</b> 
       efetuar logout em sua conta ao final de cada sessão de utilização.
    </div>
    <div><b>(iii)</b> 
-      notificar a T2Ti sobre desligamentos de USUÁRIOs do SOFTWARE.
+      notificar a NORTIX sobre desligamentos de USUÁRIOs do SOFTWARE.
    </div>
    <div><b>(iv)</b> 
       manter os dados dos USUÁRIOs do SOFTWARE atualizados.
    </div>
    <div><br></div>
-   <div>3.6.2. A T2Ti não será responsável por qualquer perda ou dano decorrente da falha do USUÁRIO em cumprir ao que estabelece esta seção.</div>
+   <div>3.6.2. A NORTIX não será responsável por qualquer perda ou dano decorrente da falha do USUÁRIO em cumprir ao que estabelece esta seção.</div>
 
    <div><br></div>
    <div><br></div>
@@ -723,15 +733,15 @@ const htmlData = r"""
    <div><br></div>
    <div>4.1.2. O USUÁRIO concorda que é responsável pelas definições do SOFTWARE, por seus próprios critérios, interesses e necessidades.</div>
    <div><br></div>
-   <div><b>4.3. A T2Ti não se responsabiliza pela existência, quantidade, qualidade, estado, integridade ou legitimidade dos dados, conteúdos e informações inseridas pelo USUÁRIO, na medida em que não realiza qualquer controle quanto ao uso dos dados, restringindo-se a garantir o funcionamento do sistema.</b></div>
+   <div><b>4.3. A NORTIX não se responsabiliza pela existência, quantidade, qualidade, estado, integridade ou legitimidade dos dados, conteúdos e informações inseridas pelo USUÁRIO, na medida em que não realiza qualquer controle quanto ao uso dos dados, restringindo-se a garantir o funcionamento do sistema.</b></div>
    <div><br></div>
-   <div><b>4.4. Em nenhum caso a T2Ti será responsável pelo lucro cessante ou por qualquer outro dano e/ou prejuízo que o USUÁRIO possa sofrer devido às configurações estabelecidas no SOFTWARE.</b></div>
+   <div><b>4.4. Em nenhum caso a NORTIX será responsável pelo lucro cessante ou por qualquer outro dano e/ou prejuízo que o USUÁRIO possa sofrer devido às configurações estabelecidas no SOFTWARE.</b></div>
    <div><br></div>
-   <div><b>4.5. Em nenhum caso a T2Ti será responsável por problemas advindos pelo uso mal intencionado do SOFTWARE. É de inteira responsabilidade do USUÁRIO emitir o comprovante fiscal em situações em que é obrigado por lei.</b></div>
+   <div><b>4.5. Em nenhum caso a NORTIX será responsável por problemas advindos pelo uso mal intencionado do SOFTWARE. É de inteira responsabilidade do USUÁRIO emitir o comprovante fiscal em situações em que é obrigado por lei.</b></div>
    <div><br></div>
-   <div>4.6. A T2Ti não se responsabiliza pelo serviço de instalação de seus aplicativos nos dispositivos do USUÁRIO.</div>
+   <div>4.6. A NORTIX não se responsabiliza pelo serviço de instalação de seus aplicativos nos dispositivos do USUÁRIO.</div>
    <div><br></div>
-   <div>4.7. A T2Ti não se responsabiliza por eventuais erros e/ou falhas apresentadas pelo SOFTWARE que tenham por causa problemas nos computadores, dispositivos móveis ou na rede utilizada pelo USUÁRIO, sendo certo que, nesses casos, o USUÁRIO assume toda a responsabilidade pelo erro e/ou falha apresentada.</div>
+   <div>4.7. A NORTIX não se responsabiliza por eventuais erros e/ou falhas apresentadas pelo SOFTWARE que tenham por causa problemas nos computadores, dispositivos móveis ou na rede utilizada pelo USUÁRIO, sendo certo que, nesses casos, o USUÁRIO assume toda a responsabilidade pelo erro e/ou falha apresentada.</div>
    <div><br></div>
    <div>4.8.     O USUÁRIO é responsável por toda a atividade que ocorrer em sua conta de acesso aos serviços.</div>
    <div><br></div>
@@ -743,21 +753,21 @@ const htmlData = r"""
    <div><br></div>
    <div><b>4.12. O USUÁRIO concorda que a emissão de documentos eletrônicos é de sua inteira e exclusiva responsabilidade, na medida em que feita a partir de configurações que são de responsabilidade do USUÁRIO, sob os seus exclusivos critérios, interesses e necessidades, sendo certo que o SOFTWARE não realiza conferência aos dados lançados no sistema.</b></div>
    <div><br></div>
-   <div>4.13. A T2Ti garante ao USUÁRIO que o SOFTWARE deverá funcionar regularmente, se respeitadas as condições de uso definidas na documentação. Na ocorrência de falhas de programação (“bugs”), a T2Ti obrigar-se-á a corrigir tais falhas, podendo a seu critério substituir a cópia dos Programas com falhas por cópias corrigidas.</div>
+   <div>4.13. A NORTIX garante ao USUÁRIO que o SOFTWARE deverá funcionar regularmente, se respeitadas as condições de uso definidas na documentação. Na ocorrência de falhas de programação (“bugs”), a NORTIX obrigar-se-á a corrigir tais falhas, podendo a seu critério substituir a cópia dos Programas com falhas por cópias corrigidas.</div>
    <div><br></div>
-   <div>4.14. A T2Ti responsabiliza-se por manter as INFORMAÇÕES DE CONTA, INFORMAÇÕES ADMINISTRATIVAS e INFORMAÇÕES PESSOAIS do USUÁRIO, bem como seus registros de acesso, em sigilo, sendo que as referidas INFORMAÇÕES serão armazenadas em ambiente seguro, sendo respeitadas a intimidade, a vida privada, a honra e a imagem do USUÁRIO, em conformidade com as disposições da Lei nº 12.965/2014 e com a Política de Privacidade.</div>
+   <div>4.14. A NORTIX responsabiliza-se por manter as INFORMAÇÕES DE CONTA, INFORMAÇÕES ADMINISTRATIVAS e INFORMAÇÕES PESSOAIS do USUÁRIO, bem como seus registros de acesso, em sigilo, sendo que as referidas INFORMAÇÕES serão armazenadas em ambiente seguro, sendo respeitadas a intimidade, a vida privada, a honra e a imagem do USUÁRIO, em conformidade com as disposições da Lei nº 12.965/2014 e com a Política de Privacidade.</div>
    <div><br></div>
-   <div>4.15. Exceto no caso de conduta dolosa comprovada, em nenhum momento a T2Ti será responsável por perda ou dano de qualquer natureza que surja como resultado de uso do SOFTWARE ou qualquer outra informação, dados, ou serviço fornecido através desta Infraestrutura.</div>
+   <div>4.15. Exceto no caso de conduta dolosa comprovada, em nenhum momento a NORTIX será responsável por perda ou dano de qualquer natureza que surja como resultado de uso do SOFTWARE ou qualquer outra informação, dados, ou serviço fornecido através desta Infraestrutura.</div>
    <div><br></div>
-   <div>4.16. Em nenhuma hipótese a T2Ti será responsável por quaisquer danos indiretos, de qualquer natureza, que possam, direta ou indiretamente, ser atribuíveis ao uso, ou à incapacidade de uso do SOFTWARE, mesmo se advertida sobre a possibilidade de tais danos ou se tais danos fossem previsíveis.</div>
+   <div>4.16. Em nenhuma hipótese a NORTIX será responsável por quaisquer danos indiretos, de qualquer natureza, que possam, direta ou indiretamente, ser atribuíveis ao uso, ou à incapacidade de uso do SOFTWARE, mesmo se advertida sobre a possibilidade de tais danos ou se tais danos fossem previsíveis.</div>
    <div><br></div>
-   <div>4.17. A T2Ti não é responsável perante o USUÁRIO por qualquer atraso ou não execução do SOFTWARE, ou falha em acessar a Infraestrutura, decorrente de qualquer causa além do razoável controle.</div>
+   <div>4.17. A NORTIX não é responsável perante o USUÁRIO por qualquer atraso ou não execução do SOFTWARE, ou falha em acessar a Infraestrutura, decorrente de qualquer causa além do razoável controle.</div>
    <div><br></div>
    <div>4.18. O USUÁRIO é responsável por todas as obrigações perante terceiros decorrentes da utilização do SOFTWARE, incluindo contratuais, trabalhistas, tributários e passivos regulatórios.</div>
    <div><br></div>
-   <div>4.19.  A T2Ti não garante que o SOFTWARE será ininterrupto ou livre de erros, que defeitos serão corrigidos ou que o servidor em que ele é disponibilizado ou qualquer sistema conectado a ele está livre de vírus ou outros componentes nocivos.</div>
+   <div>4.19.  A NORTIX não garante que o SOFTWARE será ininterrupto ou livre de erros, que defeitos serão corrigidos ou que o servidor em que ele é disponibilizado ou qualquer sistema conectado a ele está livre de vírus ou outros componentes nocivos.</div>
    <div><br></div>
-   <div><b>4.20. A T2Ti não se responsabiliza por:</b></div>
+   <div><b>4.20. A NORTIX não se responsabiliza por:</b></div>
    <div><br></div>
    <div><b>1. Falha de operação, operação por pessoas não autorizadas ou qualquer outra causa em que não possua culpa;</b></div>
    <div><b><br></b></div>
@@ -776,7 +786,7 @@ const htmlData = r"""
    <div><br></div>
    <div>4.21.  O USUÁRIO declara, neste ato, que possui autoridade para fornecer as informações necessárias para o SOFTWARE e concorda que analisará e cumprirá todos os termos de Produto e Serviço de Terceiros, não utilizará os Serviços e Produtos de terceiros de forma que infrinja ou viole direitos do SOFTWARE ou de terceiros.</div>
    <div><br></div>
-   <div>4.22. A T2Ti responsabiliza-se a adotar as medidas de segurança adequadas ao padrão de mercado para a proteção das informações do USUÁRIO. <b>Contudo, o USUÁRIO, desde já, reconhece que nenhum sistema, servidor ou SOFTWARE está absolutamente imune a ataques, não sendo o SOFTWARE responsável por qualquer exclusão, obtenção utilização ou divulgação não autorizada de informações que seja resultante de ataques.</b></div>
+   <div>4.22. A NORTIX responsabiliza-se a adotar as medidas de segurança adequadas ao padrão de mercado para a proteção das informações do USUÁRIO. <b>Contudo, o USUÁRIO, desde já, reconhece que nenhum sistema, servidor ou SOFTWARE está absolutamente imune a ataques, não sendo o SOFTWARE responsável por qualquer exclusão, obtenção utilização ou divulgação não autorizada de informações que seja resultante de ataques.</b></div>
    <div><br></div>
    <div>4.23. O USUÁRIO expressamente declara e garante que:</div>
    <div><br></div>
@@ -805,25 +815,25 @@ const htmlData = r"""
    <div><br></div>
    <div>12. Não interferirá com o funcionamento normal da Infraestrutura.</div>
    <div><br></div>
-   <div>4.24. A T2Ti reserva-se o direito de suspender ou bloquear imediatamente o acesso do USUÁRIO à Infraestrutura e a remover quaisquer informações ou dados que considere uma violação de qualquer um destes Termos Gerais, sem aviso prévio e/ou disponibilizar dita informação quando solicitada por órgãos públicos ou por ordem judicial.</div>
+   <div>4.24. A NORTIX reserva-se o direito de suspender ou bloquear imediatamente o acesso do USUÁRIO à Infraestrutura e a remover quaisquer informações ou dados que considere uma violação de qualquer um destes Termos Gerais, sem aviso prévio e/ou disponibilizar dita informação quando solicitada por órgãos públicos ou por ordem judicial.</div>
    <div><br></div>
-   <div>4.25. A T2Ti trabalha e envidará os seus maiores esforços para manter a Infraestrutura e os Serviços em funcionamento, contudo, todos os serviços online estão sujeitos a interrupções e paradas ocasionais.</div>
+   <div>4.25. A NORTIX trabalha e envidará os seus maiores esforços para manter a Infraestrutura e os Serviços em funcionamento, contudo, todos os serviços online estão sujeitos a interrupções e paradas ocasionais.</div>
    <div><br></div>
-   <div>4.26. A T2Ti compromete-se a prestar os serviços objeto deste contrato com emprego de pessoal qualificado e observando as melhores técnicas aplicáveis.  Entretanto, o USUÁRIO será a única parte responsável pela verificação da idoneidade dos dados de entrada e inserção de parâmetros operacionais configuráveis pelo USUÁRIO, bem como pelo controle da qualidade e consistência dos dados de saída e materiais gerados pelo emprego do SOFTWARE, os quais deverão verificar sempre antes de utilizá-los em quaisquer aplicações que dependam de forma crítica da exatidão dos mesmos.</div>
+   <div>4.26. A NORTIX compromete-se a prestar os serviços objeto deste contrato com emprego de pessoal qualificado e observando as melhores técnicas aplicáveis.  Entretanto, o USUÁRIO será a única parte responsável pela verificação da idoneidade dos dados de entrada e inserção de parâmetros operacionais configuráveis pelo USUÁRIO, bem como pelo controle da qualidade e consistência dos dados de saída e materiais gerados pelo emprego do SOFTWARE, os quais deverão verificar sempre antes de utilizá-los em quaisquer aplicações que dependam de forma crítica da exatidão dos mesmos.</div>
    <div><br></div>
-   <div>4.27. A T2Ti responsabiliza-se perante o USUÁRIO pela observância das normas trabalhistas, previdenciárias e de higiene e segurança do trabalho relativas a todo o pessoal que direta ou indiretamente, sob qualquer modalidade, venha a utilizar para dar cumprimento ao objeto deste contrato.</div>
+   <div>4.27. A NORTIX responsabiliza-se perante o USUÁRIO pela observância das normas trabalhistas, previdenciárias e de higiene e segurança do trabalho relativas a todo o pessoal que direta ou indiretamente, sob qualquer modalidade, venha a utilizar para dar cumprimento ao objeto deste contrato.</div>
    <div><br></div>
-   <div>4.28. A T2Ti compromete-se a repetir, sem qualquer ônus para o USUÁRIO, quaisquer serviços realizados de forma deficiente, bem como a reparar qualquer dano decorrente deste tipo de evento, uma vez que o USUÁRIO tenha previamente observado todas as condições previstas neste contrato.</div>
+   <div>4.28. A NORTIX compromete-se a repetir, sem qualquer ônus para o USUÁRIO, quaisquer serviços realizados de forma deficiente, bem como a reparar qualquer dano decorrente deste tipo de evento, uma vez que o USUÁRIO tenha previamente observado todas as condições previstas neste contrato.</div>
    <div><br></div>
-   <div>4.29. A T2Ti não se responsabiliza, em nenhuma hipótese, por perdas ou geração de passivos fiscais, trabalhistas ou previdenciários para o estabelecimento empresarial do USUÁRIO por força de decisões de tribunais ou de alterações legislativas, municipais, estaduais ou de acordos/convenções de sindicatos que venham a alterar o os parâmetros de cálculo no SOFTWARE, responsabilizando-se apenas pelas mudanças de legislações federais.</div>
+   <div>4.29. A NORTIX não se responsabiliza, em nenhuma hipótese, por perdas ou geração de passivos fiscais, trabalhistas ou previdenciários para o estabelecimento empresarial do USUÁRIO por força de decisões de tribunais ou de alterações legislativas, municipais, estaduais ou de acordos/convenções de sindicatos que venham a alterar o os parâmetros de cálculo no SOFTWARE, responsabilizando-se apenas pelas mudanças de legislações federais.</div>
    <div><br></div>
-   <div><b>4.30. A T2Ti não se responsabiliza por quaisquer ações geradas antes da assinatura do presente contrato, especialmente por quaisquer cálculos e processos realizados por SOFTWAREs anteriores, cujos dados foram migrados para o sistema da T2Ti.</b></div>
+   <div><b>4.30. A NORTIX não se responsabiliza por quaisquer ações geradas antes da assinatura do presente contrato, especialmente por quaisquer cálculos e processos realizados por SOFTWAREs anteriores, cujos dados foram migrados para o sistema da NORTIX.</b></div>
    <div><br></div>
    <div>4.31. Por fim, são responsabilidades do USUÁRIO:&nbsp;</div>
    <div><br></div>
-   <div>a) Operar o SOFTWARE em conformidade com as especificações e orientações da T2Ti, incluindo-se o conjunto de atividades de preparação, seleção e digitação das informações inerentes e necessárias para atingir os objetivos a que se propõe;</div>
+   <div>a) Operar o SOFTWARE em conformidade com as especificações e orientações da NORTIX, incluindo-se o conjunto de atividades de preparação, seleção e digitação das informações inerentes e necessárias para atingir os objetivos a que se propõe;</div>
    <div><br></div>
-   <div>b) Contratar terceiros e seus SOFTWAREs, se necessários, para implantar e manter o melhor funcionamento do SOFTWARE da T2Ti, bem como seus aplicativos e funcionalidades;</div>
+   <div>b) Contratar terceiros e seus SOFTWAREs, se necessários, para implantar e manter o melhor funcionamento do SOFTWARE da NORTIX, bem como seus aplicativos e funcionalidades;</div>
    <div><br></div>
    <div>c) Disponibilizar a infraestrutura necessária para o funcionamento do SOFTWARE, ou seja, garantir o ambiente básico para execução dos Módulos do SOFTWARE, tal como hardware adequado (capacidade de processador, memória, espaço em disco, entre outros), Sistema Operacional, Banco de Dados ou outros SOFTWARES interdependentes), infraestrutura de comunicação (links, equipamentos de rede) e ambiente de trabalho;</div>
    <div><br></div>
@@ -831,13 +841,13 @@ const htmlData = r"""
    <div><br></div>
    <div>e) Controlar a qualidade das informações introduzidas e produzidas pelo SOFTWARE e a correta aplicação da legislação vigente, qual seja pertinente aos propósitos de uso do SOFTWARE;</div>
    <div><br></div>
-   <div>f) Repassar somente informações corretas e completas à T2Ti;</div>
+   <div>f) Repassar somente informações corretas e completas à NORTIX;</div>
    <div><br></div>
    <div>g) Garantir a disponibilidade de profissionais para o esclarecimento de dúvidas, a resolução de problemas e executar todas as atividades previamente definidas, bem como, efetuar todos os esforços para o cumprimento dos prazos estabelecidos;</div>
    <div><br></div>
-   <div>h) Resolver quaisquer problemas advindos do acesso via WEB, visto que as partes anuem que a T2Ti não tem controle e/ou responsabilidade sobre a estrutura do estabelecimento empresarial do USUÁRIO tampouco sobre as ferramentas de proteção contra invasões remotas, sendo que qualquer invasão ou acesso remoto a dados ou sob sua guarda não significará em hipótese alguma falha no SOFTWARE ou na prestação de serviços da T2Ti;</div>
+   <div>h) Resolver quaisquer problemas advindos do acesso via WEB, visto que as partes anuem que a NORTIX não tem controle e/ou responsabilidade sobre a estrutura do estabelecimento empresarial do USUÁRIO tampouco sobre as ferramentas de proteção contra invasões remotas, sendo que qualquer invasão ou acesso remoto a dados ou sob sua guarda não significará em hipótese alguma falha no SOFTWARE ou na prestação de serviços da NORTIX;</div>
    <div><br></div>
-   <div>i) Tomar todas as medidas necessárias para que o Sistema seja utilizado com observância dos Termos Gerais e Condições de Uso e se responsabilizará por quaisquer violações à propriedade intelectual da T2Ti ou de qualquer terceiro.</div>
+   <div>i) Tomar todas as medidas necessárias para que o Sistema seja utilizado com observância dos Termos Gerais e Condições de Uso e se responsabilizará por quaisquer violações à propriedade intelectual da NORTIX ou de qualquer terceiro.</div>
 
    <div><br></div>
    <div><br></div>
@@ -850,7 +860,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div><b>5.1. O SOFTWARE em sua versão gratuita, que não precisa entrar em contato com o servidor da T2Ti ou com os servidores da SEFAZ, garante 100% de disponibiliade no dispositivo do USUÁRIO.
+   <div><b>5.1. O SOFTWARE em sua versão gratuita, que não precisa entrar em contato com o servidor da NORTIX ou com os servidores da SEFAZ, garante 100% de disponibiliade no dispositivo do USUÁRIO.
    Na versão Fiscal, serão empreendidos esforços comercialmente razoáveis para tornar o SOFTWARE disponível, no mínimo, 99% (noventa e nove por cento) durante cada Mês de Serviço.</b></div>
    <div><br></div>
    <div>5.3. O compromisso de nível de serviço não se aplica caso as circunstâncias de indisponibilidade resultem:
@@ -874,7 +884,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>6.1.     Caso qualquer pessoa, USUÁRIO ou não, se sinta lesado em relação a qualquer problema gerado pelo SOFTWARE, poderá encaminhar à T2Ti uma notificação, por escrito, relatando a demanda, a qual notificará o USUÁRIO com as providências cabíveis, sem que lhe seja imputada qualquer responsabilidade.</div>
+   <div>6.1.     Caso qualquer pessoa, USUÁRIO ou não, se sinta lesado em relação a qualquer problema gerado pelo SOFTWARE, poderá encaminhar à NORTIX uma notificação, por escrito, relatando a demanda, a qual notificará o USUÁRIO com as providências cabíveis, sem que lhe seja imputada qualquer responsabilidade.</div>
    <div><br></div>
    <div>6.2.     A retirada de qualquer conteúdo ou USUÁRIO pelo SOFTWARE, de forma unilateral, dependerá de efetiva comprovação ou forte evidência da ilegalidade ou infração à lei, direitos de terceiros e/ou aos Termos de Uso.</div>
    <div><br></div>
@@ -882,7 +892,7 @@ const htmlData = r"""
    <div><br></div>
    <div>6.3.1.  O notificante declarará que as informações contidas na notificação são precisas e verdadeiras, sob pena de incorrer nas consequentes responsabilidades cíveis e penais, e que o notificante está autorizado a agir em nome do titular do direito supostamente violado.</div>
    <div><br></div>
-   <div>6.4.     As notificações deverão ser encaminhadas à PLATAFORMA para o seguinte e-mail: t2ti.com@gmail.com.</div>
+   <div>6.4.     As notificações deverão ser encaminhadas à PLATAFORMA para o seguinte e-mail: solucoestwo@gmail.com.</div>
 
    <div><br></div>
    <div><br></div>
@@ -908,9 +918,9 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>8.1. O SOFTWARE T2Ti Pegasus PDV funciona no esquema SUPORTLESS, ou seja, a T2Ti cobra um valor módico e não oferece suporte para a aplicação, sendo que o USUÁRIO deve assistir às vídeo aulas no canal da T2Ti no Youtube para compreender como utilizar o SOFTWARE.</div>
+   <div>8.1. O SOFTWARE Nortix funciona no esquema SUPORTLESS, ou seja, a NORTIX cobra um valor módico e não oferece suporte para a aplicação, sendo que o USUÁRIO deve assistir às vídeo aulas no canal da NORTIX no Youtube para compreender como utilizar o SOFTWARE.</div>
    <div><br></div>
-   <div>8.2. O USUÁRIO poderá entrar em contato com a T2Ti para solicitar Suporte Técnico, assim como Assessoria Operacional. A T2Ti avaliará a
+   <div>8.2. O USUÁRIO poderá entrar em contato com a NORTIX para solicitar Suporte Técnico, assim como Assessoria Operacional. A NORTIX avaliará a
    necessidade do usuário e poderá oferecer um serviço personalizado cobrando o respectivo valor do USUÁRIO.
    Tal serviço poderá ser prestado por Acesso Remoto, solução que utiliza ferramentas de comunicação e conexão que permite acessar o computador do 
    CONTRATANTE para atividades de verificação, ajustes e demais atividades inerentes ao Suporte Técnico e Assessoria Operacional sobre o SOFTWARE licenciado.</div>
@@ -926,13 +936,13 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>9.1. O USUÁRIO e a T2Ti poderão rescindir estes Termos e Condições a qualquer momento. No caso da T2Ti, deve existir notificação e o SOFTWARE deve ainda funcionar
+   <div>9.1. O USUÁRIO e a NORTIX poderão rescindir estes Termos e Condições a qualquer momento. No caso da NORTIX, deve existir notificação e o SOFTWARE deve ainda funcionar
    pelo tempo que foi contratado pelo USUÁRIO. No caso do USUÁRIO, basta que o mesmo deixe de utilizar a aplicação gratuita ou não realize mais
-   os pagamentos do plano, sendo que, quando este expirar, não mais terá acesso aos serviços pagos. Assim sendo, o USUÁRIO não precisa notificar à T2Ti que deixará de utilizar o SOFTWARE.</div>
+   os pagamentos do plano, sendo que, quando este expirar, não mais terá acesso aos serviços pagos. Assim sendo, o USUÁRIO não precisa notificar à NORTIX que deixará de utilizar o SOFTWARE.</div>
    <div><br></div>
-   <div>9.2. A T2Ti reserva-se o direito de rescindir o contrato, restringir ou suspender o uso dos serviços por parte do USUÁRIO, mediante notificação, a qualquer tempo, sempre que a utilização dos serviços violar o presente Termo.</div>
+   <div>9.2. A NORTIX reserva-se o direito de rescindir o contrato, restringir ou suspender o uso dos serviços por parte do USUÁRIO, mediante notificação, a qualquer tempo, sempre que a utilização dos serviços violar o presente Termo.</div>
    <div><br></div>
-   <div>9.3. O USUÁRIO autoriza expressamente a T2Ti a manter em seu cadastro as informações fornecidas por ele, bem como autoriza a fornecer as informações constantes de referido cadastro a autoridades públicas que as solicitarem conforme permitido pela legislação em vigor e a seus parceiros estratégicos, comerciais ou técnicos, com a finalidade de oferecer melhores condições de promoções e/ou conteúdo, desde que não individualize os USUÁRIOs e estabelecimentos empresariais, nos termos da Política de Privacidade.</div>
+   <div>9.3. O USUÁRIO autoriza expressamente a NORTIX a manter em seu cadastro as informações fornecidas por ele, bem como autoriza a fornecer as informações constantes de referido cadastro a autoridades públicas que as solicitarem conforme permitido pela legislação em vigor e a seus parceiros estratégicos, comerciais ou técnicos, com a finalidade de oferecer melhores condições de promoções e/ou conteúdo, desde que não individualize os USUÁRIOs e estabelecimentos empresariais, nos termos da Política de Privacidade.</div>
 
    <div><br></div>
    <div><br></div>
@@ -945,7 +955,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>10.1.   O USUÁRIO expressamente aceita que a T2Ti e/ou qualquer de seus parceiros enviem mensagens de e-mail de caráter informativo, referentes a comunicações específicas sobre serviços disponibilizados ou que venham a ser disponibilizados, bem como outras mensagens de natureza comercial, nos Termos da Política de Privacidade. Caso o USUÁRIO não deseje mais receber referidas mensagens deverá solicitar o cancelamento do seu envio junto à T2Ti.</div>
+   <div>10.1.   O USUÁRIO expressamente aceita que a NORTIX e/ou qualquer de seus parceiros enviem mensagens de e-mail de caráter informativo, referentes a comunicações específicas sobre serviços disponibilizados ou que venham a ser disponibilizados, bem como outras mensagens de natureza comercial, nos Termos da Política de Privacidade. Caso o USUÁRIO não deseje mais receber referidas mensagens deverá solicitar o cancelamento do seu envio junto à NORTIX.</div>
    <div><br></div>
    <div>10.2. As informações referentes à data e hora de acesso e ao endereço de protocolo de internet utilizado pelo USUÁRIO para acessar o SOFTWARE permanecerão armazenadas por 6 (meses) a contar da data de cada acesso realizado, independentemente do término da relação jurídica e comercial entre as partes, em cumprimento ao disposto no Artigo 15 da Lei nº 12.965/2014, podendo ser armazenados por um período maior de tempo mediante ordem judicial.</div>
 
@@ -960,23 +970,23 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>11.1. Todos os direitos e propriedade intelectual no tocante ao SOFTWARE e à tecnologia permanecerão na propriedade exclusiva da T2Ti, mesmo que esta venha a desenvolver novas funcionalidades a pedido e remuneração do USUÁRIO. Portanto, a tecnologia objeto do licenciamento pelo presente contrato, incluindo seus programas, fluxogramas, aperfeiçoamentos, adaptações e demais funcionalidades, assim como toda a documentação técnica são de propriedade total e definitiva da empresa supracitada, de forma que os direitos autorais e outros direitos de propriedade intelectual relativos ao mesmo são iguais aos conferidos às obras literárias, nos moldes da legislação de direitos autorais vigentes no país, conforme expressa determinação do Artigo 2º e Parágrafos da Lei 9.609/98.</div>
+   <div>11.1. Todos os direitos e propriedade intelectual no tocante ao SOFTWARE e à tecnologia permanecerão na propriedade exclusiva da NORTIX, mesmo que esta venha a desenvolver novas funcionalidades a pedido e remuneração do USUÁRIO. Portanto, a tecnologia objeto do licenciamento pelo presente contrato, incluindo seus programas, fluxogramas, aperfeiçoamentos, adaptações e demais funcionalidades, assim como toda a documentação técnica são de propriedade total e definitiva da empresa supracitada, de forma que os direitos autorais e outros direitos de propriedade intelectual relativos ao mesmo são iguais aos conferidos às obras literárias, nos moldes da legislação de direitos autorais vigentes no país, conforme expressa determinação do Artigo 2º e Parágrafos da Lei 9.609/98.</div>
    <div><br></div>
    <div>11.2. O USUÁRIO, ao adquirir o direito de uso do SOFTWARE, estará apenas autorizado a atualizá-lo na forma estabelecida no presente instrumento, sendo a ele vedada à utilização de métodos tais como engenharia reversa, descompilação, ou qualquer outro, que possibilite o acesso ao código fonte do SOFTWARE.</div>
    <div><br></div>
-   <div>11.3. O USUÁRIO não poderá ceder a terceiros o SOFTWARE e/ou documentação fornecidos pela T2Ti sob qualquer pretexto, comprometendo-se por seus empregados ou prepostos a manter em boa guarda os acessos do SOFTWARE e a documentação recebida.</div>
+   <div>11.3. O USUÁRIO não poderá ceder a terceiros o SOFTWARE e/ou documentação fornecidos pela NORTIX sob qualquer pretexto, comprometendo-se por seus empregados ou prepostos a manter em boa guarda os acessos do SOFTWARE e a documentação recebida.</div>
    <div><br></div>
    <div>11.4. O SOFTWARE é configurado em modo padronizado, tendo em vista a interpretação dominante acerca da aplicação da legislação a que este se propõe, sendo que em algumas hipóteses será possível alterar parâmetros, visando sua adaptação às situações específicas ou para que reflitam uma interpretação particular do próprio USUÁRIO acerca da legislação.</div>
    <div><br></div>
-   <div><b>11.5. Sempre que os parâmetros do sistema forem alterados pelo USUÁRIO, a T2Ti será totalmente isenta de qualquer responsabilidade pela respectiva geração de dados, visto que o USUÁRIO é o responsável direto pela parametrização do SOFTWARE.</b></div>
+   <div><b>11.5. Sempre que os parâmetros do sistema forem alterados pelo USUÁRIO, a NORTIX será totalmente isenta de qualquer responsabilidade pela respectiva geração de dados, visto que o USUÁRIO é o responsável direto pela parametrização do SOFTWARE.</b></div>
    <div><br></div>
    <div>11.6. Através deste contrato, é cedido ao USUÁRIO apenas o direito de uso da tecnologia em questão, sem a necessidade da apresentação ou fornecimento do código fonte ou estrutura interna do produto.</div>
    <div><br></div>
-   <div>11.7. O USUÁRIO também concorda que não utilizará nenhum robô ou outros dispositivos automatizados ou processos manuais para monitorar ou copiar conteúdo do serviço, sob pena de responder perante a T2Ti pelas perdas e danos que causar, incluindo honorários advocatícios, quando necessários para a defesa dos interesses da T2Ti.</div>
+   <div>11.7. O USUÁRIO também concorda que não utilizará nenhum robô ou outros dispositivos automatizados ou processos manuais para monitorar ou copiar conteúdo do serviço, sob pena de responder perante a NORTIX pelas perdas e danos que causar, incluindo honorários advocatícios, quando necessários para a defesa dos interesses da NORTIX.</div>
    <div><br></div>
-   <div>11.8. A T2Ti reserva-se o direito de modificar, suspender, terminar ou descontinuar qualquer aspecto do SOFTWARE a qualquer tempo, incluindo a disponibilidade de quaisquer Serviços, informações, características ou funcionalidades, bem como de impor limitações a certas características, funcionalidades ou serviços ou restringir USUÁRIO a partes ou à totalidade do SOFTWARE, mediante prévia notificação.</div>
+   <div>11.8. A NORTIX reserva-se o direito de modificar, suspender, terminar ou descontinuar qualquer aspecto do SOFTWARE a qualquer tempo, incluindo a disponibilidade de quaisquer Serviços, informações, características ou funcionalidades, bem como de impor limitações a certas características, funcionalidades ou serviços ou restringir USUÁRIO a partes ou à totalidade do SOFTWARE, mediante prévia notificação.</div>
    <div><br></div>
-   <div>11.9. A T2Ti reserva-se, também, o direito de, a qualquer tempo ou título, controlar e/ou alterar a aparência, o desenvolvimento e/ou operações do SOFTWARE a seu exclusivo critério, bem como estabelecer e modificar os procedimentos para o contato entre as partes, sem a necessidade de notificação prévia.</div>
+   <div>11.9. A NORTIX reserva-se, também, o direito de, a qualquer tempo ou título, controlar e/ou alterar a aparência, o desenvolvimento e/ou operações do SOFTWARE a seu exclusivo critério, bem como estabelecer e modificar os procedimentos para o contato entre as partes, sem a necessidade de notificação prévia.</div>
    <div><br></div>
    <div>11.10. Qualquer violação ao direito do autor do SOFTWARE importará numa multa de acordo com a legistação vigente, independente de perdas e danos apuradas judicialmente e interpelações criminais.</div>
 
@@ -991,21 +1001,21 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>12.1. O SOFTWARE T2Ti Pegasus PDV funciona no esquema SUPORTLESS, ou seja, a T2Ti cobra um valor módico e não oferece suporte para a aplicação.
-   No entanto, o USUÁRIO poderá solicitar um serviço de Assessoria Técnica e/ou Operacional, onde a T2Ti, após prévia análise de requisitos e custos, poderá 
+   <div>12.1. O SOFTWARE Nortix funciona no esquema SUPORTLESS, ou seja, a NORTIX cobra um valor módico e não oferece suporte para a aplicação.
+   No entanto, o USUÁRIO poderá solicitar um serviço de Assessoria Técnica e/ou Operacional, onde a NORTIX, após prévia análise de requisitos e custos, poderá 
    disponibilizar um ou mais técnicos para atendimento, local ou remoto.</div>
    <div><br></div>
-   <div>12.2. O tempo aplicado em consultas inerentes ao Sistema Operacional, Aplicativos de Terceiros ou utilitários e produtos não pertencentes à T2Ti será considerado como Assessoria Operacional.</div>
+   <div>12.2. O tempo aplicado em consultas inerentes ao Sistema Operacional, Aplicativos de Terceiros ou utilitários e produtos não pertencentes à NORTIX será considerado como Assessoria Operacional.</div>
    <div><br></div>
    <div>12.3. A hora técnica da Assessoria Operacional será equivalente a 60 (sessenta) minutos e o serviço será prestado em horário comercial, considerado das 08h00min às 12h00min e 13h00min às 18h00min, conforme horário de Brasília/BR, de segunda-feira à sexta-feira.</div>
    <div><br></div>
    <div>12.4. Serviços prestados fora do horário supracitado serão acrescidos do percentual de hora extraordinária em 50% (cinquenta por cento), e quando prestados em sábados, domingos e feriados, o valor hora terá acréscimo de 100% (cem por cento).</div>
    <div><br></div>
-   <div>12.5. Os valores dos honorários por hora técnica de Assessoria Técnica e/ou Operacional serão acertados pelo USUÁRIO e pela T2Ti previamente antes da realização do serviço.</div>
+   <div>12.5. Os valores dos honorários por hora técnica de Assessoria Técnica e/ou Operacional serão acertados pelo USUÁRIO e pela NORTIX previamente antes da realização do serviço.</div>
    <div><br></div>
-   <div>12.6. Os tempos gastos em deslocamentos serão cobrados tomando-se como base a unidade da T2Ti mais próxima do USUÁRIO, mediante prévia negociação entre as partes.</div>
+   <div>12.6. Os tempos gastos em deslocamentos serão cobrados tomando-se como base a unidade da NORTIX mais próxima do USUÁRIO, mediante prévia negociação entre as partes.</div>
    <div><br></div>
-   <div>12.7. Na hipótese do usuário solicitar modificações na aplicação, a T2Ti apresentará orçamento prévio para realização do trabalho, devendo ser firmado instrumento de contrato específico para tal finalidade.</div>
+   <div>12.7. Na hipótese do usuário solicitar modificações na aplicação, a NORTIX apresentará orçamento prévio para realização do trabalho, devendo ser firmado instrumento de contrato específico para tal finalidade.</div>
    <div><br></div>
 
    <div><br></div>
@@ -1021,7 +1031,7 @@ const htmlData = r"""
 
    <div>13.1. O processo de implantação so SOFTWARE é simples e seguro e deverá ser seguido de acordo com a vídeo aula que mostra como realizar a implantação (instalação) na respectiva plataforma do USUÁRIO.</div>
    <div><br></div>
-   <div>13.2. Caberá à T2Ti a disponibilização de vídeo aulas gratuitas online em ambiente de fácil utilização que ensinem o funcionamento do SOFTWARE. </div>
+   <div>13.2. Caberá à NORTIX a disponibilização de vídeo aulas gratuitas online em ambiente de fácil utilização que ensinem o funcionamento do SOFTWARE. </div>
    <div><br></div>
    <div>13.3. Caberá ao USUÁRIO assistir às vídeo aulas para compreender como utilizar o SOFTWARE.</div>
    <div><br></div>
@@ -1038,23 +1048,23 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>14.1. A Atualização do SOFTWARE compreende todas as alterações de programas e de sua respectiva documentação que a T2Ti venha a criar e que torne necessária à sua atualização, complementação ou reprogramação, visando melhorias ou instalação de novas operações ou por alterações na legislação.</div>
+   <div>14.1. A Atualização do SOFTWARE compreende todas as alterações de programas e de sua respectiva documentação que a NORTIX venha a criar e que torne necessária à sua atualização, complementação ou reprogramação, visando melhorias ou instalação de novas operações ou por alterações na legislação.</div>
    <div><br></div>
    <div>14.2. A interpretação legal das normas editadas pelo governo e a sua implementação no SOFTWARE serão efetuadas com base nas publicações especializadas e divulgadas sobre cada matéria em veículos de comunicação de domínio público. Contudo, a responsabilidade pela anuência dos parâmetros será sempre do estabelecimento empresarial contratante e do USUÁRIO.</div>
    <div><br></div>
-   <div>14.3. As interpretações divergentes por parte do estabelecimento empresarial contratante e do USUÁRIO, quando implementadas, serão consideradas como Customizações do SOFTWARE, sendo que a T2Ti não será obrigada a implementar alterações única e exclusivamente baseada na avaliação de um USUÁRIO, mas se obrigará a fazê-lo segundo requerimento da maioria de seus estabelecimentos empresariais clientes.</div>
+   <div>14.3. As interpretações divergentes por parte do estabelecimento empresarial contratante e do USUÁRIO, quando implementadas, serão consideradas como Customizações do SOFTWARE, sendo que a NORTIX não será obrigada a implementar alterações única e exclusivamente baseada na avaliação de um USUÁRIO, mas se obrigará a fazê-lo segundo requerimento da maioria de seus estabelecimentos empresariais clientes.</div>
    <div><br></div>
    <div>14.4. As modificações impostas por Associações, Sindicatos ou outros grupos específicos poderão ser implementadas mediante aprovação de orçamento prévio.</div>
    <div><br></div>
-   <div>14.5. As melhorias e as novas funções introduzidas pela T2Ti no SOFTWARE originalmente licenciado serão distribuídas visando dotar o USUÁRIO sempre com a última versão do SOFTWARE.</div>
+   <div>14.5. As melhorias e as novas funções introduzidas pela NORTIX no SOFTWARE originalmente licenciado serão distribuídas visando dotar o USUÁRIO sempre com a última versão do SOFTWARE.</div>
    <div><br></div>
-   <div>14.6. Poderão ser realizadas complementações no SOFTWARE pela T2Ti por solicitação escrita do USUÁRIO. Nesse caso, serão cobradas como Customizações as horas trabalhadas na sede do estabelecimento empresarial contratante para levantamentos, implantação e treinamento.</div>
+   <div>14.6. Poderão ser realizadas complementações no SOFTWARE pela NORTIX por solicitação escrita do USUÁRIO. Nesse caso, serão cobradas como Customizações as horas trabalhadas na sede do estabelecimento empresarial contratante para levantamentos, implantação e treinamento.</div>
    <div><br></div>
-   <div>14.7. As atividades de análise, programação, testes, documentação e distribuição das alterações efetuadas na sede da T2Ti serão faturadas conforme orçamento prévio ou apresentação de relatórios e resultados de cada fase.</div>
+   <div>14.7. As atividades de análise, programação, testes, documentação e distribuição das alterações efetuadas na sede da NORTIX serão faturadas conforme orçamento prévio ou apresentação de relatórios e resultados de cada fase.</div>
    <div><br></div>
    <div>14.8. A garantia de atualização do SOFTWARE expressa nesta cláusula não abrange as Customizações feitas no SOFTWARE por solicitação do USUÁRIO.</div>
    <div><br></div>
-   <div>14.9. A Propriedade Intelectual das customizações realizadas pela T2Ti no SOFTWARE, mesmo que por solicitação da USUÁRIO, será exclusiva da T2Ti e poderá ser incorporada às versões distribuídas a outros clientes desta, sem que caiba qualquer tipo de reembolso ou ressarcimento ao USUÁRIO ou ao estabelecimento empresarial contratante.</div>
+   <div>14.9. A Propriedade Intelectual das customizações realizadas pela NORTIX no SOFTWARE, mesmo que por solicitação da USUÁRIO, será exclusiva da NORTIX e poderá ser incorporada às versões distribuídas a outros clientes desta, sem que caiba qualquer tipo de reembolso ou ressarcimento ao USUÁRIO ou ao estabelecimento empresarial contratante.</div>
 
    <div><br></div>
    <div><br></div>
@@ -1082,7 +1092,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>16.1. O USUÁRIO concorda que a T2Ti poderá divulgar a celebração deste instrumento para fins comerciais, fazendo menção ao nome e à marca do USUÁRIO em campanhas comerciais, podendo, inclusive, divulgar mensagens enviadas de forma escrita ou oral, por telefone, para uso em sites, jornais, revistas e outras campanhas, mesmo após a rescisão destes Termos.</div>
+   <div>16.1. O USUÁRIO concorda que a NORTIX poderá divulgar a celebração deste instrumento para fins comerciais, fazendo menção ao nome e à marca do USUÁRIO em campanhas comerciais, podendo, inclusive, divulgar mensagens enviadas de forma escrita ou oral, por telefone, para uso em sites, jornais, revistas e outras campanhas, mesmo após a rescisão destes Termos.</div>
    <div><br></div>
    <div>16.2. Os casos omissos e quaisquer dúvidas relativas à execução deste Contrato serão resolvidos por meio de consultas e mútuos entendimentos entre as Partes, assinando-se termo de aditamento sempre que necessário.</div>
    <div><br></div>
@@ -1094,7 +1104,7 @@ const htmlData = r"""
    <div><br></div>
    <div>16.6. Todas as correspondências, notificações e comunicações entre as partes deverão ser feitas via e-mail, fac-símile, carta protocolada, notificação cartorária ou qualquer outro meio idôneo que permita confirmação de recebimento, direcionadas aos endereços constantes do preâmbulo do presente Contrato, devendo a Parte que tiver alteração de endereço, e-mail, telefone ou fax comunicar a outra imediatamente, por escrito.</div>
    <div><br></div>
-   <div>16.7. O USUÁRIO não poderá ceder, sublicenciar, subcontratar, transferir ou dispor de quaisquer direitos e obrigações no âmbito destes Termos de Uso sem o consentimento prévio da T2Ti. A T2Ti poderá ceder o Contrato ou os direitos dele decorrentes a qualquer uma das sociedades do grupo econômico do qual faz parte ou que possa vir a fazer parte no futuro, ficando obrigada a comunicar ao USUÁRIO sua intenção.</div>
+   <div>16.7. O USUÁRIO não poderá ceder, sublicenciar, subcontratar, transferir ou dispor de quaisquer direitos e obrigações no âmbito destes Termos de Uso sem o consentimento prévio da NORTIX. A NORTIX poderá ceder o Contrato ou os direitos dele decorrentes a qualquer uma das sociedades do grupo econômico do qual faz parte ou que possa vir a fazer parte no futuro, ficando obrigada a comunicar ao USUÁRIO sua intenção.</div>
    <div><br></div>
    <div>16.8. Os tributos e demais encargos fiscais que forem devidos, direta ou indiretamente, em virtude dos valores pagos ou recebidos através deste Contrato ou em virtude de sua execução serão de responsabilidade do contribuinte assim definido na norma tributária, sem direito a reembolso.</div>
    <div><br></div>
@@ -1113,7 +1123,7 @@ const htmlData = r"""
    </div>
    <div><br></div>
 
-   <div>17.1. O presente contrato será regido pela legislação brasileira, elegendo as partes o Foro de Brasília, Distrito Federal, 
+   <div>17.1. O presente contrato será regido pela legislação brasileira, elegendo as partes o Foro de Porto Alegre, Rio Grande do Sul, 
    como único competente para conhecer e dirimir quaisquer questões oriundas do presente Contrato, com expressa renúncia a qualquer outro, 
    por mais privilegiado que seja.</div>
    <div><br></div>

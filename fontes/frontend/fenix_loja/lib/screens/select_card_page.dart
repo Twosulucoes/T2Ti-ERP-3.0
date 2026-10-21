@@ -18,7 +18,7 @@ class SelectCardPage extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Select Card',
+            'Selecionar cartão',
             style: TextStyle(color: darkGrey),
           ),
           elevation: 0,
@@ -43,7 +43,7 @@ class SelectCardPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('CREDIT CARD',
+                        Text('CARTÃO DE CRÉDITO',
                             style:
                                 TextStyle(color: Colors.white, fontSize: 18.0)),
                         Padding(
@@ -159,7 +159,7 @@ class SelectCardPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('This will be deducted',
+                              Text('Este valor será debitado',
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 10.0)),
                               Row(
@@ -167,13 +167,13 @@ class SelectCardPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    '\$ ',
+                                    'R\$ ',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10.0),
                                   ),
                                   Text(
-                                    '90.00',
+                                    '90,00',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20.0),

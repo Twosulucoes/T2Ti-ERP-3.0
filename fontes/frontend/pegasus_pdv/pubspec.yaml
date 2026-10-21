@@ -35,7 +35,7 @@ dependencies:
     sdk: flutter
   provider: any
   intl: any
-  font_awesome_flutter: any
+  font_awesome_flutter: 10.6.0
   backdrop: ^0.9.1
   http: any
   extended_masked_text: any
@@ -110,7 +110,7 @@ flutter:
      - .env
 
 msix_config:
-  display_name: T2Ti Pegasus PDV
+  display_name: Nortix
   publisher_display_name: T2Ti.COM
   identity_name: T2Ti.COM.T2TiPegasusPDV
   msix_version: 1.0.10.0

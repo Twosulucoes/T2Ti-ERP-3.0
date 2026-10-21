@@ -81,7 +81,7 @@ class CaixaPageState extends State<CaixaPage> {
   double? _quantidadeInformada = 1;
   bool _fornecidoDescontoNoItem = false;
   String _tituloJanela = Constantes.tituloCaixaAberto;
-  String _modulo = "Pegasus PDV";
+  String _modulo = Constantes.nomeApp;
   bool _emitindoNota = false;
 
   Produto? _produto = const Produto(id: null);
@@ -979,12 +979,12 @@ class CaixaPageState extends State<CaixaPage> {
     final tipoOperacao = Sessao.configuracaoPdv!.moduloFiscalPrincipal ?? 'REC';
     setState(() {
       if (Sessao.configuracaoPdv!.modulo == 'G') {
-        _modulo = 'Pegasus PDV Lite - Gratuito';
+        _modulo = '${Constantes.nomeApp} - Sem emissão fiscal';
       } else {
         if (Sessao.configuracaoPdv!.moduloFiscalPrincipal == 'NFC') {
-          _modulo = 'Pegasus PDV - Versão NFC-e';
+          _modulo = '${Constantes.nomeApp} - NFC-e';
         } else if (Sessao.configuracaoPdv!.moduloFiscalPrincipal == 'SAT') {
-          _modulo = 'Pegasus PDV - Versão SAT/MFE';
+          _modulo = '${Constantes.nomeApp} - SAT/MFE';
         }
       }
       
